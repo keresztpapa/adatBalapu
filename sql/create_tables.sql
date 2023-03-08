@@ -24,8 +24,8 @@ CREATE TABLE kiadta (
   mikor DATE,
 
   CONSTRAINT kdta_pk PRIMARY KEY (nev, isbn, mikor),
-  CONSTRAINT kdta_nev_fk FOREIGN KEY (nev) REFERENCES kiado(nev),
-  CONSTRAINT kdta_isbn_fk FOREIGN KEY (isbn) REFERENCES konyv(isbn)
+  CONSTRAINT kdta_nev_fk FOREIGN KEY (nev) REFERENCES kiado(nev) ON UPDATE CASCADE ON DELETE NO ACTION,
+  CONSTRAINT kdta_isbn_fk FOREIGN KEY (isbn) REFERENCES konyv(isbn) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE szerzoje (
@@ -33,7 +33,7 @@ CREATE TABLE szerzoje (
   isbn VARCHAR2(13),
 
   CONSTRAINT szrzj_pk PRIMARY KEY (szerzonev, isbn),
-  CONSTRAINT szrzj_isbn_fk FOREIGN KEY (isbn) REFERENCES konyv(isbn)
+  CONSTRAINT szrzj_isbn_fk FOREIGN KEY (isbn) REFERENCES konyv(isbn) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE mufaja (
@@ -41,7 +41,7 @@ CREATE TABLE mufaja (
   isbn VARCHAR2(13),
 
   CONSTRAINT mfj_pk PRIMARY KEY (mufajnev, isbn),
-  CONSTRAINT mfj_isbn_fk FOREIGN KEY (isbn) REFERENCES konyv(isbn)
+  CONSTRAINT mfj_isbn_fk FOREIGN KEY (isbn) REFERENCES konyv(isbn) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE felhasznalo(
@@ -58,8 +58,8 @@ CREATE TABLE kedvence (
   email VARCHAR2(100),
 
   CONSTRAINT kdvnc_pk PRIMARY KEY (email, isbn),
-  CONSTRAINT kdvnc_isbn_fk FOREIGN KEY (isbn) REFERENCES konyv(isbn),
-  CONSTRAINT kdvnc_email_fk FOREIGN KEY (email) REFERENCES felhasznalo(email)
+  CONSTRAINT kdvnc_isbn_fk FOREIGN KEY (isbn) REFERENCES konyv(isbn) ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT kdvnc_email_fk FOREIGN KEY (email) REFERENCES felhasznalo(email) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE ertekeles (
@@ -69,8 +69,8 @@ CREATE TABLE ertekeles (
   megjegyzes VARCHAR2(500),
 
   CONSTRAINT ertek_pk PRIMARY KEY (email, isbn),
-  CONSTRAINT ertek_isbn_fk FOREIGN KEY (isbn) REFERENCES konyv(isbn),
-  CONSTRAINT ertek_email_fk FOREIGN KEY (email) REFERENCES felhasznalo(email)
+  CONSTRAINT ertek_isbn_fk FOREIGN KEY (isbn) REFERENCES konyv(isbn) ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT ertek_email_fk FOREIGN KEY (email) REFERENCES felhasznalo(email) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE tetel (
@@ -81,8 +81,8 @@ CREATE TABLE tetel (
   hova VARCHAR2(100),
   darabszam NUMBER(2, 0) CONSTRAINT ttl_darabszam_nn NOT NULL, 
 
-  CONSTRAINT ttl_email_fk FOREIGN KEY (email) REFERENCES felhasznalo(email),
-  CONSTRAINT ttl_isbn_fk FOREIGN KEY (isbn) REFERENCES konyv(isbn)
+  CONSTRAINT ttl_email_fk FOREIGN KEY (email) REFERENCES felhasznalo(email) ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT ttl_isbn_fk FOREIGN KEY (isbn) REFERENCES konyv(isbn) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 COMMIT;
