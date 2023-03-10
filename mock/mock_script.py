@@ -1,9 +1,12 @@
 from faker import Faker
 from coolname import generate
 from wonderwords import RandomWord
-import random
+import random, oracledb
 faker = Faker(locale='en_US')
 r = RandomWord()
+
+connection = oracledb.connect(user="SYSOPER", password="root", dsn="localhost/xepdb1")
+
 
 def generate_Publisher():
     print(faker.phone_number())
