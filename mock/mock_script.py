@@ -67,10 +67,11 @@ def user():
     role = ["admin", "guest", "user"]
     f_name = faker.first_name()
     s_name = faker.last_name()
+    full_name = f_name+" "+s_name
     email = f_name+'_'+s_name+'@gmail.com'
     passwd = faker.word()
-    sql = f"INSERT INTO felhasznalo (email, nev, jelszo, cim, telefon, szerep) VALUES ({email}, {f_name+' '+s_name}, {passwd}, {faker.address(), {faker.phone_number()}, {role[random.randint(0, len(role)-1)]}});"
-
+    sql = f"INSERT INTO felhasznalo (email, nev, jelszo, cim, telefon, szerep) VALUES ('{email}', '{full_name}', '{passwd}', '{faker.address()}', '{faker.phone_number()[0:-4]}', '{role[random.randint(0, len(role)-1)]}')"
+    cursor.execute(sql)
 
 def book():
     title = ' '.join(generate())
@@ -111,6 +112,7 @@ for i in range(10):
     publisher()
     store()
     book()
+    user()
 
 for row in cursor.execute("SELECT isbn FROM konyv"):
     konyv_isbn.append(row[0])
@@ -137,7 +139,7 @@ while len(konyv_isbn) != 0:
 """test("kiadta")"""
 #test("szerzoje")
 #test("mufaja")
-test("felhasznalo")
+#test("felhasznalo")
 test("kedvence")
 test("ertekeles")
 test("tetel")
