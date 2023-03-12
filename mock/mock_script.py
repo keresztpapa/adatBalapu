@@ -103,10 +103,12 @@ def cart():
 global konyv_isbn
 global publish_name
 global auth_name
+global email_ls
 
 konyv_isbn = []
 publish_name = []
 auth_name = []
+email_ls = []
 
 for i in range(10):
     publisher()
@@ -123,9 +125,17 @@ for row in cursor.execute("SELECT nev FROM kiado"):
 for row in cursor.execute("SELECT szerzonev FROM szerzoje"):
     auth_name.append(row[0])
 
+for row in cursor.execute("SELECT email FROM felhasznalo"):
+    email_ls.append(row[0])
+
 for i in range(len(konyv_isbn)):
     author(faker.name(), konyv_isbn[i])
     genres(konyv_isbn[i])
+
+for i in range(len(email_ls)):
+    if random.randint(0,9) != 0:
+        favourite(konyv_isbn[random.randint(0,len(konyv_isbn)-1)],email_ls[i])
+        
 
 """
 while len(konyv_isbn) != 0:
