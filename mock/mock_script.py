@@ -84,8 +84,8 @@ def book():
 
 ###############
 def who_and_when_published(comp_name:str, book_isbn):
-    sql = f"INSERT INTO kiadta (nev, isbn, mikor) VALUES ('{comp_name}','{book_isbn}','{faker.date()}')"
-    cursor.execute(sql)
+    sql = f"INSERT INTO kiadta (nev, isbn, mikor) VALUES ('{comp_name}','{book_isbn}','{faker.year()}')"
+    #cursor.execute(sql)
 ################
 
 def author_of_book(auth_name:str, book_isbn):
@@ -99,14 +99,17 @@ def rating(book_isbn, mail:str):
     sql = f"INSERT INTO ertekeles (isbn, email, pontszam, megjegyzes) VALUES ('{book_isbn}', '{mail}', '{random.randint(0,6)}', '{r.word( include_parts_of_speech=['nouns', 'adjectives'])}')"
     cursor.execute(sql)
 
-def cart():
-    pass
+def cart(x,email, isbn, darab):
+    sql = f"INSERT INTO tetel (id,email, isbn, darabszam) VALUES ('{x}','{email}', '{isbn}', '{darab}')"
+    cursor.execute(sql)
 
 global konyv_isbn
 global publish_name
 global auth_name
 global email_ls
+global id_counter
 
+id_counter = 0
 konyv_isbn = []
 publish_name = []
 auth_name = []
@@ -133,6 +136,7 @@ for row in cursor.execute("SELECT email FROM felhasznalo"):
 for i in range(len(konyv_isbn)):
     author(faker.name(), konyv_isbn[i])
     genres(konyv_isbn[i])
+    #who_and_when_published(publish_name[random.randint(0, len(publish_name)-1)], konyv_isbn[i])
 
 for i in range(len(email_ls)):
     if random.randint(0,9) != 0:
@@ -140,14 +144,10 @@ for i in range(len(email_ls)):
     if random.randint(0,9) != 0 and random.randint(0,9) != 1 and random.randint(0,9) != 2 and random.randint(0,9) != 3 :
         rating(konyv_isbn[random.randint(0,len(konyv_isbn)-1)],email_ls[i])
     
-        
+for i in range(10):
+    cart(id_counter,email_ls[random.randint(0,len(email_ls)-1)],konyv_isbn[random.randint(0,len(konyv_isbn)-1)], random.randint(0,3))
+    id_counter = id_counter + 1 
 
-"""
-while len(konyv_isbn) != 0:
-    x = random.randint(0, len(konyv_isbn)-1)
-    who_and_when_published(publish_name[random.randint(0, len(publish_name)-1)], konyv_isbn[x])
-    konyv_isbn.pop(x)
-"""
 #test("uzlet")
 #test("konyv")
 #test("kiado")
@@ -157,6 +157,6 @@ while len(konyv_isbn) != 0:
 #test("felhasznalo")
 #test("kedvence")
 #test("ertekeles")
-test("tetel")
+#test("tetel")
 con.commit()
 con.close()
