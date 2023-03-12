@@ -52,7 +52,8 @@ def publisher():
 
 def genres(book_isbn):
     genres = ["Fantasy","Adventure","Romance","Contemporary","Dystopian","Mystery","Horror","Thriller","Paranormal","Historical fiction","Science Fiction","Children’s" ,"Memoir","Cookbook","Art","Self-help","Development","Motivational","Health","History","Travel","Guide / How-to","Families & Relationships","Humor"]
-    sql = f"INSERT INTO mufaja (mufajnev, isbn) VALUES ({genres[random.randint(0,len(genres)-1)]}, {book_isbn});"
+    sql = f"INSERT INTO mufaja (mufajnev, isbn) VALUES ('{genres[random.randint(0,len(genres)-1)]}', '{book_isbn}')"
+    cursor.execute(sql)
 
 def author(nev:str, isbn):
     sql = f"INSERT INTO szerzoje (szerzonev, isbn) VALUES ('{nev}', '{isbn}')"
@@ -106,29 +107,23 @@ konyv_isbn = []
 publish_name = []
 auth_name = []
 
-print("stage 1")
-
-for row in cursor.execute("SELECT isbn FROM konyv"):
-    konyv_isbn.append(row[0])
-    print(row)
-
-for row in cursor.execute("SELECT nev FROM kiado"):
-    publish_name.append(row[0])
-    print(row)
-
-for row in cursor.execute("SELECT szerzonev FROM szerzoje"):
-    auth_name.append(row[0])
-    print(row)
-
 for i in range(10):
     publisher()
     store()
     book()
 
+for row in cursor.execute("SELECT isbn FROM konyv"):
+    konyv_isbn.append(row[0])
+
+for row in cursor.execute("SELECT nev FROM kiado"):
+    publish_name.append(row[0])
+
+for row in cursor.execute("SELECT szerzonev FROM szerzoje"):
+    auth_name.append(row[0])
+
 for i in range(len(konyv_isbn)):
     author(faker.name(), konyv_isbn[i])
-
-print(konyv_isbn)
+    genres(konyv_isbn[i])
 
 """
 while len(konyv_isbn) != 0:
@@ -139,7 +134,12 @@ while len(konyv_isbn) != 0:
 #test("uzlet")
 #test("konyv")
 #test("kiado")
-test("kiadta")
-test("szerzoje")
+"""test("kiadta")"""
+#test("szerzoje")
+#test("mufaja")
+test("felhasznalo")
+test("kedvence")
+test("ertekeles")
+test("tetel")
 con.commit()
 con.close()
