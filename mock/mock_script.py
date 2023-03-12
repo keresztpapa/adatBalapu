@@ -14,8 +14,11 @@ r = RandomWord()
 con = oracledb.connect(user="system", password="oracle", host="localhost", port=1521, service_name="xe")
 cursor = con.cursor()
 
-"""
+
 cursor.execute("CREATE TABLE uzlet (cim VARCHAR2(100) CONSTRAINT uzl_cim_pk PRIMARY KEY, nev VARCHAR2(100) CONSTRAINT uzl_nev_nn NOT NULL);")
+
+#cursor.execute("DROP TABLE uzlet CASCADE CONSTRAINTS PURGE;")
+"""
 cursor.execute("CREATE TABLE konyv (isbn VARCHAR2(13) CONSTRAINT knyv_isbn_pk PRIMARY KEY,boritokep BLOB,ar NUMBER(10, -1) CONSTRAINT knyv_ar_nn NOT NULL,kotes VARCHAR2(20),cim VARCHAR2(100) CONSTRAINT knyv_cim_nn NOT NULL,oldalszam NUMBER(5));")
 cursor.execute("CREATE TABLE kiado (nev VARCHAR2(100) CONSTRAINT nev_pk PRIMARY KEY,cim VARCHAR2(100) CONSTRAINT cim_nn NOT NULL,telefon VARCHAR2(20));")
 cursor.execute("CREATE TABLE kiadta (nev VARCHAR2(100), isbn VARCHAR2(13),mikor DATE,CONSTRAINT kdta_pk PRIMARY KEY (nev, isbn, mikor),CONSTRAINT kdta_nev_fk FOREIGN KEY (nev) REFERENCES kiado(nev),CONSTRAINT kdta_isbn_fk FOREIGN KEY (isbn) REFERENCES konyv(isbn) ON DELETE CASCADE);")
@@ -26,7 +29,7 @@ cursor.execute("CREATE TABLE kedvence ( isbn VARCHAR2(13),email VARCHAR2(100),CO
 cursor.execute("CREATE TABLE ertekeles ( isbn VARCHAR2(13),email VARCHAR2(100),pontszam NUMBER(1) CONSTRAINT ertek_pontszam_nn NOT NULL,megjegyzes VARCHAR2(500),CONSTRAINT ertek_pk PRIMARY KEY (email, isbn),CONSTRAINT ertek_isbn_fk FOREIGN KEY (isbn) REFERENCES konyv(isbn) ON DELETE CASCADE,CONSTRAINT ertek_email_fk FOREIGN KEY (email) REFERENCES felhasznalo(email) ON DELETE CASCADE);")
 cursor.execute("CREATE TABLE tetel (  id NUMBER CONSTRAINT ttl_id_pk PRIMARY KEY,   email VARCHAR2(100) CONSTRAINT ttl_email_nn NOT NULL,  isbn VARCHAR2(13) CONSTRAINT ttl_isbn_nn NOT NULL,  mikor DATE,  hova VARCHAR2(100),darabszam NUMBER(2, 0) CONSTRAINT ttl_darabszam_nn NOT NULL, CONSTRAINT ttl_email_fk FOREIGN KEY (email) REFERENCES felhasznalo(email) ON DELETE CASCADE, CONSTRAINT ttl_isbn_fk FOREIGN KEY (isbn) REFERENCES konyv(isbn) ON DELETE CASCADE);")
 
-cursor.execute("DROP TABLE uzlet CASCADE CONSTRAINTS PURGE;")
+
 cursor.execute("DROP TABLE konyv CASCADE CONSTRAINTS PURGE;")
 cursor.execute("DROP TABLE kiado CASCADE CONSTRAINTS PURGE;")
 cursor.execute("DROP TABLE kiadta CASCADE CONSTRAINTS PURGE;")
