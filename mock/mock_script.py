@@ -92,10 +92,12 @@ def author_of_book(auth_name:str, book_isbn):
     pass
 
 def favourite(book_isbn, mail:str):
-    sql = f"INSERT INTO kedvence (isbn, email) VALUES ({book_isbn}, {mail});"
+    sql = f"INSERT INTO kedvence (isbn, email) VALUES ('{book_isbn}', '{mail}')"
+    cursor.execute(sql)
 
 def rating(book_isbn, mail:str):
-    sql = f"INSERT INTO ertekeles (isbn, email, pontszam, megjegyzes) VALUES ({book_isbn}, {mail}, {random.randint(1,6)}, {r.word( include_parts_of_speech=['nouns', 'adjectives'])});"
+    sql = f"INSERT INTO ertekeles (isbn, email, pontszam, megjegyzes) VALUES ('{book_isbn}', '{mail}', '{random.randint(0,6)}', '{r.word( include_parts_of_speech=['nouns', 'adjectives'])}')"
+    cursor.execute(sql)
 
 def cart():
     pass
@@ -135,6 +137,9 @@ for i in range(len(konyv_isbn)):
 for i in range(len(email_ls)):
     if random.randint(0,9) != 0:
         favourite(konyv_isbn[random.randint(0,len(konyv_isbn)-1)],email_ls[i])
+    if random.randint(0,9) != 0 and random.randint(0,9) != 1 and random.randint(0,9) != 2 and random.randint(0,9) != 3 :
+        rating(konyv_isbn[random.randint(0,len(konyv_isbn)-1)],email_ls[i])
+    
         
 
 """
@@ -150,8 +155,8 @@ while len(konyv_isbn) != 0:
 #test("szerzoje")
 #test("mufaja")
 #test("felhasznalo")
-test("kedvence")
-test("ertekeles")
+#test("kedvence")
+#test("ertekeles")
 test("tetel")
 con.commit()
 con.close()
