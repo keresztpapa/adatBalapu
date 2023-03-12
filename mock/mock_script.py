@@ -82,14 +82,9 @@ def book():
     sql = f"INSERT INTO konyv (isbn, ar, kotes, cim, oldalszam) VALUES ('{faker.isbn10()}', '{price}', '{cover[random.randint(0, len(cover)-1)]}', '{title}', '{page_number}')"
     cursor.execute(sql)
 
-###############
 def who_and_when_published(comp_name:str, book_isbn):
-    sql = f"INSERT INTO kiadta (nev, isbn, mikor) VALUES ('{comp_name}','{book_isbn}','{faker.year()}')"
-    #cursor.execute(sql)
-################
-
-def author_of_book(auth_name:str, book_isbn):
-    pass
+    sql = f"INSERT INTO kiadta (nev, isbn, mikor) VALUES ('{comp_name}','{book_isbn}','{random.randint(1950,2023)}')"
+    cursor.execute(sql)
 
 def favourite(book_isbn, mail:str):
     sql = f"INSERT INTO kedvence (isbn, email) VALUES ('{book_isbn}', '{mail}')"
@@ -136,7 +131,7 @@ for row in cursor.execute("SELECT email FROM felhasznalo"):
 for i in range(len(konyv_isbn)):
     author(faker.name(), konyv_isbn[i])
     genres(konyv_isbn[i])
-    #who_and_when_published(publish_name[random.randint(0, len(publish_name)-1)], konyv_isbn[i])
+    who_and_when_published(publish_name[random.randint(0, len(publish_name)-1)], konyv_isbn[i])
 
 for i in range(len(email_ls)):
     if random.randint(0,9) != 0:
@@ -148,15 +143,15 @@ for i in range(10):
     cart(id_counter,email_ls[random.randint(0,len(email_ls)-1)],konyv_isbn[random.randint(0,len(konyv_isbn)-1)], random.randint(0,3))
     id_counter = id_counter + 1 
 
-#test("uzlet")
-#test("konyv")
-#test("kiado")
-"""test("kiadta")"""
-#test("szerzoje")
-#test("mufaja")
-#test("felhasznalo")
-#test("kedvence")
-#test("ertekeles")
-#test("tetel")
+test("uzlet")
+test("konyv")
+test("kiado")
+test("kiadta")
+test("szerzoje")
+test("mufaja")
+test("felhasznalo")
+test("kedvence")
+test("ertekeles")
+test("tetel")
 con.commit()
 con.close()
