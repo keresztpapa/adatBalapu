@@ -3,6 +3,7 @@ from coolname import generate
 from wonderwords import RandomWord
 import random
 import oracledb
+from datetime import datetime
 faker = Faker(locale='en_US')
 r = RandomWord()
 
@@ -14,24 +15,48 @@ r = RandomWord()
 con = oracledb.connect(user="SCOTT", password="tiger", host="localhost", port=1521, service_name="xe")
 cursor = con.cursor()
 
+sql_delete = f"DELETE FROM uzlet"
+cursor.execute(sql_delete)
+sql_delete = f"DELETE FROM konyv"
+cursor.execute(sql_delete)
+sql_delete = f"DELETE FROM kiado"
+cursor.execute(sql_delete)
+sql_delete = f"DELETE FROM kiadta"
+cursor.execute(sql_delete)
+sql_delete = f"DELETE FROM szerzoje"
+cursor.execute(sql_delete)
+sql_delete = f"DELETE FROM mufaja"
+cursor.execute(sql_delete)
+sql_delete = f"DELETE FROM felhasznalo"
+cursor.execute(sql_delete)
+sql_delete = f"DELETE FROM kedvence"
+cursor.execute(sql_delete)
+sql_delete = f"DELETE FROM ertekeles"
+cursor.execute(sql_delete)
+sql_delete = f"DELETE FROM tetel"
+cursor.execute(sql_delete)
+con.commit()
+
 def test(str):
   cursor.execute(f"SELECT * FROM {str}")
   myresult = cursor.fetchall()
+  i = 0
   for x in myresult:
-    print(x)
+    i = i+1
+    print(f"{i}.{str} ,   {x}")
 
 
-def generate_Publisher():
-    print(faker.phone_number())
-    print(faker.address())
-    print(faker.company())
+def publisher():
+    sql = f"INSERT INTO kiado (nev, cim, telefon) VALUES ('{faker.company()}', '{faker.address()}', '{faker.phone_number()[0:-4]}')"
+    cursor.execute(sql)
 
-def gen_genres(book_isbn):
+def genres(book_isbn):
     genres = ["Fantasy","Adventure","Romance","Contemporary","Dystopian","Mystery","Horror","Thriller","Paranormal","Historical fiction","Science Fiction","Children’s" ,"Memoir","Cookbook","Art","Self-help","Development","Motivational","Health","History","Travel","Guide / How-to","Families & Relationships","Humor"]
     sql = f"INSERT INTO mufaja (mufajnev, isbn) VALUES ({genres[random.randint(0,len(genres)-1)]}, {book_isbn});"
 
-def author():
-    print(faker.name())
+def author(nev:str, isbn):
+    sql = f"INSERT INTO szerzoje (szerzonev, isbn) VALUES ('{nev}', '{isbn}')"
+    cursor.execute(sql)
 
 def store():
     sql = f"INSERT INTO uzlet (cim, nev) VALUES ('{faker.company()}', '{faker.address()}')"
@@ -52,11 +77,14 @@ def book():
     cover = ["soft-cover","hard-cover", "ebook"]
     price = faker.random_number(digits=4)
     page_number = faker.random_number(digits=3)
-    sql = f"INSERT INTO konyv (isbn, boritokep, ar, kotes, cim, oldalszam) VALUES ('{faker.isbn10()}', '{None}', '{price}', '{cover[random.randint(0, len(cover)-1)]}', '{title}', '{page_number}')"
+    sql = f"INSERT INTO konyv (isbn, ar, kotes, cim, oldalszam) VALUES ('{faker.isbn10()}', '{price}', '{cover[random.randint(0, len(cover)-1)]}', '{title}', '{page_number}')"
     cursor.execute(sql)
 
-def who_and_when_published(comp_name:str, book_isbn, book_date):
-    sql = f"INSERT INTO kiadta (nev, isbn, mikor) VALUES ({comp_name},{book_isbn}, {book_date});"
+###############
+def who_and_when_published(comp_name:str, book_isbn):
+    sql = f"INSERT INTO kiadta (nev, isbn, mikor) VALUES ('{comp_name}','{book_isbn}','{faker.date()}')"
+    cursor.execute(sql)
+################
 
 def author_of_book(auth_name:str, book_isbn):
     pass
@@ -70,9 +98,48 @@ def rating(book_isbn, mail:str):
 def cart():
     pass
 
-for i in range(20):
-#    store()
+global konyv_isbn
+global publish_name
+global auth_name
+
+konyv_isbn = []
+publish_name = []
+auth_name = []
+
+print("stage 1")
+
+for row in cursor.execute("SELECT isbn FROM konyv"):
+    konyv_isbn.append(row[0])
+    print(row)
+
+for row in cursor.execute("SELECT nev FROM kiado"):
+    publish_name.append(row[0])
+    print(row)
+
+for row in cursor.execute("SELECT szerzonev FROM szerzoje"):
+    auth_name.append(row[0])
+    print(row)
+
+for i in range(10):
+    publisher()
+    store()
     book()
 
-test("konyv")
+for i in range(len(konyv_isbn)):
+    author(faker.name(), konyv_isbn[i])
+
+print(konyv_isbn)
+
+"""
+while len(konyv_isbn) != 0:
+    x = random.randint(0, len(konyv_isbn)-1)
+    who_and_when_published(publish_name[random.randint(0, len(publish_name)-1)], konyv_isbn[x])
+    konyv_isbn.pop(x)
+"""
+#test("uzlet")
+#test("konyv")
+#test("kiado")
+test("kiadta")
+test("szerzoje")
+con.commit()
 con.close()
