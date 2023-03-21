@@ -7,11 +7,6 @@ from datetime import datetime
 faker = Faker(locale='en_US')
 r = RandomWord()
 
-#dsn_tns = cx_Oracle.makedsn('localhost', '1521', service_name='xe')
-#conn = cx_Oracle.connect(user=r'system', password='oracle', dsn=dsn_tns)
-#connection = cx_Oracle.connect(user="system", password="oracle", dsn=dsn_tns)
-#con = cx_Oracle.connect(user=r'system', password='oracle', dsn=dsn_tns)
-
 con = oracledb.connect(user="SCOTT", password="tiger", host="localhost", port=1521, service_name="xe")
 cursor = con.cursor()
 
