@@ -21,7 +21,7 @@ CREATE TABLE kiado (
 CREATE TABLE kiadta (
   nev VARCHAR2(100), 
   isbn VARCHAR2(13),
-  mikor DATE,
+  mikor NUMBER(4),
 
   CONSTRAINT kdta_pk PRIMARY KEY (nev, isbn, mikor),
   CONSTRAINT kdta_nev_fk FOREIGN KEY (nev) REFERENCES kiado(nev),

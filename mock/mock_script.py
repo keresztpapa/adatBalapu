@@ -55,7 +55,7 @@ def author(nev:str, isbn):
     cursor.execute(sql)
 
 def store():
-    sql = f"INSERT INTO uzlet (cim, nev) VALUES ('{faker.company()}', '{faker.address()}')"
+    sql = f"INSERT INTO uzlet (cim, nev) VALUES ('{faker.address()}', '{faker.company()}')"
     cursor.execute(sql)
     
 def user():
@@ -90,7 +90,7 @@ def rating(book_isbn, mail:str):
     cursor.execute(sql)
 
 def cart(x,email, isbn, darab):
-    sql = f"INSERT INTO tetel (id,email, isbn, darabszam) VALUES ('{x}','{email}', '{isbn}', '{darab}')"
+    sql = f"INSERT INTO tetel (id,email, isbn, darabszam, hova) VALUES ('{x}','{email}', '{isbn}', '{darab}', '{faker.address()}')"
     cursor.execute(sql)
 
 global konyv_isbn
@@ -105,7 +105,7 @@ publish_name = []
 auth_name = []
 email_ls = []
 
-for i in range(10):
+for i in range(100):
     publisher()
     store()
     book()
