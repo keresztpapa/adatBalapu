@@ -1,5 +1,5 @@
 --------------------------------------------------------
---  File created - szerda-március-22-2023   
+--  File created - szerda-mï¿½rcius-22-2023   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Table ERTEKELES
@@ -953,9 +953,9 @@ Insert into SCOTT.MUFAJA (MUFAJNEV,ISBN) values ('Art','0-634-34719-5');
 Insert into SCOTT.MUFAJA (MUFAJNEV,ISBN) values ('Art','1-01-185586-0');
 Insert into SCOTT.MUFAJA (MUFAJNEV,ISBN) values ('Art','1-204-80137-1');
 Insert into SCOTT.MUFAJA (MUFAJNEV,ISBN) values ('Art','1-64413-859-X');
-Insert into SCOTT.MUFAJA (MUFAJNEV,ISBN) values ('Children’s','1-121-56234-5');
-Insert into SCOTT.MUFAJA (MUFAJNEV,ISBN) values ('Children’s','1-872529-49-6');
-Insert into SCOTT.MUFAJA (MUFAJNEV,ISBN) values ('Children’s','1-918573-84-0');
+Insert into SCOTT.MUFAJA (MUFAJNEV,ISBN) values ('Childrenï¿½s','1-121-56234-5');
+Insert into SCOTT.MUFAJA (MUFAJNEV,ISBN) values ('Childrenï¿½s','1-872529-49-6');
+Insert into SCOTT.MUFAJA (MUFAJNEV,ISBN) values ('Childrenï¿½s','1-918573-84-0');
 Insert into SCOTT.MUFAJA (MUFAJNEV,ISBN) values ('Contemporary','0-01-942875-8');
 Insert into SCOTT.MUFAJA (MUFAJNEV,ISBN) values ('Contemporary','0-339-99775-3');
 Insert into SCOTT.MUFAJA (MUFAJNEV,ISBN) values ('Contemporary','0-369-80394-9');
@@ -1156,25 +1156,25 @@ Insert into SCOTT.SZERZOJE (SZERZONEV,ISBN) values ('Victoria Kerr','1-189-20984
 Insert into SCOTT.SZERZOJE (SZERZONEV,ISBN) values ('Wendy Rodriguez','0-591-07557-1');
 REM INSERTING into SCOTT.TETEL
 SET DEFINE OFF;
-Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('0','Steven_Salazar@gmail.com','1-922226-51-3',null,'Unit 3237 Box 2048
+Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('0','Steven_Salazar@gmail.com','1-922226-51-3',TO_DATE(2021-9-4 18:22:37, 'yyyy-MM-dd hh:mi:ss'),'Unit 3237 Box 2048
 DPO AE 54053','3');
-Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('1','Elizabeth_Taylor@gmail.com','1-226-58671-6',null,'1869 Avila Row Apt. 609
+Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('1','Elizabeth_Taylor@gmail.com','1-226-58671-6',TO_DATE(2021-1-11 18:48:15, 'yyyy-MM-dd hh:mi:ss'),'1869 Avila Row Apt. 609
 New Kristiefort, SC 18565','1');
-Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('2','Holly_Hall@gmail.com','0-669-65575-9',null,'102 Joseph Haven
+Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('2','Holly_Hall@gmail.com','0-669-65575-9',TO_DATE(2021-9-2 11:55:20, 'yyyy-MM-dd hh:mi:ss'),'102 Joseph Haven
 New Jennifer, PW 23910','0');
-Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('3','David_Hayden@gmail.com','1-998414-74-4',null,'5539 Lucas Ferry
+Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('3','David_Hayden@gmail.com','1-998414-74-4',TO_DATE(2022-8-18 13:56:40, 'yyyy-MM-dd hh:mi:ss'),'5539 Lucas Ferry
 Matthewchester, UT 29309','0');
-Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('4','Christopher_Jensen@gmail.com','1-918573-84-0',null,'14970 Willie Parkways
+Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('4','Christopher_Jensen@gmail.com','1-918573-84-0',TO_DATE(2021-8-6 10:21:38, 'yyyy-MM-dd hh:mi:ss'),'14970 Willie Parkways
 Leeville, CO 73987','3');
-Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('5','Melissa_Smith@gmail.com','0-674-92399-5',null,'3628 Douglas Falls
+Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('5','Melissa_Smith@gmail.com','0-674-92399-5',TO_DATE(2021-2-16 12:16:52, 'yyyy-MM-dd hh:mi:ss'),'3628 Douglas Falls
 Bellview, NE 51786','1');
-Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('6','Shannon_Ochoa@gmail.com','1-01-185586-0',null,'28988 Phillips Walks
+Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('6','Shannon_Ochoa@gmail.com','1-01-185586-0',TO_DATE(2022-10-24 17:41:23, 'yyyy-MM-dd hh:mi:ss'),'28988 Phillips Walks
 South Ashley, MS 59439','3');
-Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('7','Nicole_Moon@gmail.com','0-89255-515-7',null,'5683 Tara Valley Suite 371
+Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('7','Nicole_Moon@gmail.com','0-89255-515-7',TO_DATE(2021-12-9 20:29:27, 'yyyy-MM-dd hh:mi:ss'),'5683 Tara Valley Suite 371
 East Andrea, ME 94605','0');
-Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('8','Vanessa_Ortiz@gmail.com','0-669-65575-9',null,'5021 Welch Cliff
+Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('8','Vanessa_Ortiz@gmail.com','0-669-65575-9',TO_DATE(2021-3-11 15:28:43, 'yyyy-MM-dd hh:mi:ss'),'5021 Welch Cliff
 West Kyle, DE 10425','0');
-Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('9','Caitlyn_Castillo@gmail.com','0-9985006-0-7',null,'01230 Thomas Green Suite 758
+Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('9','Caitlyn_Castillo@gmail.com','0-9985006-0-7',TO_DATE(2022-8-4 15:32:56, 'yyyy-MM-dd hh:mi:ss'),'01230 Thomas Green Suite 758
 South Christinehaven, MP 20304','0');
 REM INSERTING into SCOTT.UZLET
 SET DEFINE OFF;

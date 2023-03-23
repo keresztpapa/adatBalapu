@@ -1,9 +1,9 @@
-CREATE TABLE uzlet (
+CREATE TABLE SCOTT.uzlet (
   cim VARCHAR2(100) CONSTRAINT uzl_cim_pk PRIMARY KEY,
   nev VARCHAR2(100) CONSTRAINT uzl_nev_nn NOT NULL
 );
 
-CREATE TABLE konyv (
+CREATE TABLE SCOTT.konyv (
   isbn VARCHAR2(13) CONSTRAINT knyv_isbn_pk PRIMARY KEY,
   boritokep BLOB,
   ar NUMBER(10, -1) CONSTRAINT knyv_ar_nn NOT NULL,
@@ -12,13 +12,13 @@ CREATE TABLE konyv (
   oldalszam NUMBER(5)
 );
 
-CREATE TABLE kiado (
+CREATE TABLE SCOTT.kiado (
   nev VARCHAR2(100) CONSTRAINT nev_pk PRIMARY KEY,
   cim VARCHAR2(100) CONSTRAINT cim_nn NOT NULL,
   telefon VARCHAR2(20)
 );
 
-CREATE TABLE kiadta (
+CREATE TABLE SCOTT.kiadta (
   nev VARCHAR2(100), 
   isbn VARCHAR2(13),
   mikor NUMBER(4),
@@ -28,7 +28,7 @@ CREATE TABLE kiadta (
   CONSTRAINT kdta_isbn_fk FOREIGN KEY (isbn) REFERENCES konyv(isbn) ON DELETE CASCADE
 );
 
-CREATE TABLE szerzoje (
+CREATE TABLE SCOTT.szerzoje (
   szerzonev VARCHAR2(100),
   isbn VARCHAR2(13),
 
@@ -36,7 +36,7 @@ CREATE TABLE szerzoje (
   CONSTRAINT szrzj_isbn_fk FOREIGN KEY (isbn) REFERENCES konyv(isbn) ON DELETE CASCADE
 );
 
-CREATE TABLE mufaja (
+CREATE TABLE SCOTT.mufaja (
   mufajnev VARCHAR2(100),
   isbn VARCHAR2(13),
 
@@ -44,7 +44,7 @@ CREATE TABLE mufaja (
   CONSTRAINT mfj_isbn_fk FOREIGN KEY (isbn) REFERENCES konyv(isbn) ON DELETE CASCADE
 );
 
-CREATE TABLE felhasznalo(
+CREATE TABLE SCOTT.felhasznalo(
   email VARCHAR2(100) CONSTRAINT usr_email_pk PRIMARY KEY,
   nev VARCHAR2(100) CONSTRAINT usr_nev_nn NOT NULL,
   jelszo VARCHAR2(32) CONSTRAINT usr_jelszo_nn NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE felhasznalo(
   szerep VARCHAR(10) CONSTRAINT usr_szerep_nn NOT NULL
 );
 
-CREATE TABLE kedvence (
+CREATE TABLE SCOTT.kedvence (
   isbn VARCHAR2(13),
   email VARCHAR2(100),
 
@@ -62,7 +62,7 @@ CREATE TABLE kedvence (
   CONSTRAINT kdvnc_email_fk FOREIGN KEY (email) REFERENCES felhasznalo(email) ON DELETE CASCADE
 );
 
-CREATE TABLE ertekeles (
+CREATE TABLE SCOTT.ertekeles (
   isbn VARCHAR2(13),
   email VARCHAR2(100),
   pontszam NUMBER(1) CONSTRAINT ertek_pontszam_nn NOT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE ertekeles (
   CONSTRAINT ertek_email_fk FOREIGN KEY (email) REFERENCES felhasznalo(email) ON DELETE CASCADE
 );
 
-CREATE TABLE tetel (
+CREATE TABLE SCOTT.tetel (
   id NUMBER CONSTRAINT ttl_id_pk PRIMARY KEY, 
   email VARCHAR2(100) CONSTRAINT ttl_email_nn NOT NULL,
   isbn VARCHAR2(13) CONSTRAINT ttl_isbn_nn NOT NULL,
