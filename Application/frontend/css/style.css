@@ -1,3 +1,54 @@
-p{
-    background-color: aqua;
+/* Define a class for the fixed navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: black;
+    color: #fff;
+    padding: 20px;
+}
+
+/* Navbar links */
+
+ul * {
+    color: aliceblue;
+    text-decoration: none;
+}
+
+/* Define a class for the search bar */
+.searchbar {
+    display: flex;
+    justify-content: space-between;
+
+    position: sticky;
+    top: 0;
+    left: 0;
+    margin-left: 250px;
+    width: auto;
+    
+    background-color: #f2f2f2;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.search {
+    width: fit-content;
+}
+
+.user-management {
+    margin-left: auto;
+}
+
+.user-management a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Define a class for the content area */
+.content {
+    margin-left: 250px;
+    padding: 20px;
+    box-sizing: border-box;
 }

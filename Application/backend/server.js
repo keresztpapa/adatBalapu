@@ -22,14 +22,14 @@ async function init() {
             {
                 host: 'linux.inf.u-szeged.hu', // Your server host name
                 port: 22, // Your server ssh port as default in ssh is 22
-                user: 'h-s azon', // Your server username
-                password: 'h-s password' // Your server password
+                user: 'h164903', // Your server username
+                password: 'Norbi06092002' // Your server password
             },
             {
                 host: "orania2.inf.u-szeged.hu", // Your database host in server as default is localhost
                 port: 1521, // Your database port in server as default is 1521
-                user: "C## NEPTUN", // Your database user
-                password: "JELSZO", // Your database password
+                user: "C##BOLZTJ", // Your database user
+                password: "12345", // Your database password
                 database: "ORANIA2.INF.U-SZEGED.HU" // Your database name
             }
         );
