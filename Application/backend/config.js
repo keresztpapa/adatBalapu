@@ -9,3 +9,4 @@ const getConfig = () => {
 };
 
 exports.getConfig = getConfig;
+1;
