@@ -3,7 +3,9 @@ const express = require('express');
 const Oracle = require('oracle-ssh');
 const oracledb = require('oracledb');
 const {resolve} = require('path');
+const cfg = require('./config.js').getConfig();
 const app = express();
+
 
 var path = require('path');
 app.use(express.static(path.join(__dirname, '../frontend')));
@@ -22,14 +24,14 @@ async function init() {
             {
                 host: 'linux.inf.u-szeged.hu', // Your server host name
                 port: 22, // Your server ssh port as default in ssh is 22
-                user: 'h164903', // Your server username
-                password: 'Norbi06092002' // Your server password
+                user: cfg.ssh_username, // Your server username
+                password: cfg.ssh_password // Your server password
             },
             {
                 host: "orania2.inf.u-szeged.hu", // Your database host in server as default is localhost
                 port: 1521, // Your database port in server as default is 1521
-                user: "C##BOLZTJ", // Your database user
-                password: "12345", // Your database password
+                user: cfg.db_username, // Your database user
+                password: cfg.db_password, // Your database password
                 database: "ORANIA2.INF.U-SZEGED.HU" // Your database name
             }
         );
