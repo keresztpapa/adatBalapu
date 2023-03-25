@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/login.css"> 
+    <title>Könyvesbolt</title>
+</head>
+<body>
+    <h1>Bejelentkezés</h1>
+	<form class="form-container" action="index.html">
+		<label class="form-label" for="email">Email:</label>
+		<input class="form-input" type="email" id="email" name="email" required>
+
+		<label class="form-label" for="password">Jelszó:</label>
+		<input class="form-input" type="password" id="password" name="password" required>
+
+		<input class="form-submit" type="submit" value="Bejelentkezés">
+	</form>
+
+	<p>Nincs még fiókod? <button class="form-login" id="signupBtn" onclick="location.href='./register.html';">Regisztráció</button></p>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/login.css"> 
+    <title>Könyvesbolt</title>
+</head>
+<body>
+    <h1>Regisztráció</h1>
+	<form class="form-container">
+		<label class="form-label" for="username">Név:</label>
+		<input class="form-input" type="text" id="username" name="username" required>
+
+		<label class="form-label" for="password">Jelszó:</label>
+		<input class="form-input" type="password" id="password" name="password" required>
+
+		<label class="form-label" for="email">Email:</label>
+		<input class="form-input" type="email" id="email" name="email" required>
+
+		<label class="form-label" for="address">Cím:</label>
+		<input class="form-input" type="text" id="address" name="address" required>
+
+		<label class="form-label" for="telephone">Telefonszám:</label>
+		<input class="form-input" type="tel" id="telephone" name="telephone" required>
+
+		<label class="form-checkbox-label" for="policy">Elfogadom a szerződési feltételeket:</label>
+		<input class="form-checkbox" type="checkbox" id="policy" name="policy" required>
+
+		<input class="form-submit" type="submit" value="Regisztrálok">
+	</form>
+
+	<p>Van már fiókod? <button class="form-login" id="loginBtn" onclick="location.href='./login.html';">Bejelentkezés</button></p>
+</body>
+</html>

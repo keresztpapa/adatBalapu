@@ -1,9 +1,9 @@
 const getConfig = () => {
     return {
-        'ssh_username' : 'h123456',
-        'ssh_password' : 'strong_password123',
-        'db_username' : 'C##NPT4LF',
-        'db_password' : 'not_so_strong_password123'
+        'ssh_username' : 'h164903',
+        'ssh_password' : 'ASDASDASDSDASDASD',
+        'db_username' : 'C##BOLZTJ',
+        'db_password' : '12345'
     } 
     
 };
