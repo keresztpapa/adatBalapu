@@ -1,0 +1,58 @@
+/* Set a fixed width for the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Style the table headers */
+th {
+  background-color: #f2f2f2;
+  color: #79121a;
+  font-weight: bold;
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Style the table cells */
+td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Add zebra striping to the table rows */
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Add hover effect to the table rows */
+tr:hover {
+  background-color: #ddd;
+}
+
+/* Center the table on the page */
+table {
+  margin: 0 auto;
+}
+
+/* Style the select element */
+select {
+  appearance:none;
+  margin: 30px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #79121a;
+  font-size: 16px;
+  color: white;
+  background-position: right 10px center;
+}
+
+/* Style the select options */
+select option {
+  padding: 10px;
+  background-color: #f2f2f2;
+  color: #79121a;
+  font-size: 16px;
+}
+

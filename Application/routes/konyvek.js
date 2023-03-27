@@ -9,7 +9,12 @@ router.get("/", async (req, res) => {
     const connection = await getConnection();
 
     // Execute the SQL query to fetch the data
-    const konyv_adatok = await connection.client.execute("SELECT konyv.isbn, konyv.cim, szerzoje.szerzonev, mufaja.mufajnev, konyv.ar, (SELECT avg(ertekeles.pontszam) AS avg_rating FROM ertekeles WHERE ertekeles.isbn = konyv.isbn) FROM konyv, szerzoje, mufaja WHERE konyv.isbn = szerzoje.isbn AND konyv.isbn = mufaja.isbn");
+    const konyv_adatok = await connection.client.execute(`
+    SELECT konyv.isbn, konyv.cim, szerzoje.szerzonev, mufaja.mufajnev, konyv.ar, 
+    (SELECT avg(ertekeles.pontszam) AS avg_rating FROM ertekeles WHERE ertekeles.isbn = konyv.isbn),
+     kiado.nev
+    FROM konyv, szerzoje, mufaja, kiado, kiadta 
+    WHERE konyv.isbn = szerzoje.isbn AND konyv.isbn = mufaja.isbn AND kiadta.isbn = konyv.isbn AND kiado.nev = kiadta.nev`);
     
     // Release the connection back to the pool
     await connection.close();

@@ -1,20 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="stylesheets/style.css">
-  <title>Könyvesbolt</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/admin.css" />
+    <title>Könyvesbolt</title>
+  </head>
+  <body>
     <!-- Navbar -->
     <% include navbar %>
-    
+
     <!-- Content area -->
     <div class="content">
-      <h2>Admin oldal </h2>
-    
+      <h2>Admin oldal</h2>
+
+      <select name="select-table" onchange="javascript:handleSelect(this)">
+        <option value="/admin/konyv">Könyvek</option>
+        <option value="/admin/szerzoje">Szerzők</option>
+        <option value="/admin/kiado">Kiadók</option>
+        <option value="/admin/kiadta">Kiadások</option>
+        <option value="/admin/mufaja">Műfajok</option>
+        <option value="/admin/felhasznalo">Felhasználók</option>
+        <option value="/admin/tetel">Tételek</option>
+        <option value="/admin/uzlet">Üzletek</option>
+      </select>
+
+      <% if (column_names !== undefined) { %>
+      <table>
+        <thead>
+          <tr>
+            <% for (let i = 0; i < column_names.length; i++) { %>
+            <th><%= column_names[i] %></th>
+            <% } %>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (let i = 0; i < rows.length; i++) { %>
+          <tr>
+            <% for (let j = 0; j < rows[i].length; j++) { %>
+            <td><%= rows[i][j] %></td>
+            <% } %>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <% } %>
     </div>
+
+    <script type="text/javascript">
+      function handleSelect(elm) {
+        window.location = elm.value;
+      }
+    </script>
   </body>
 </html>

@@ -27,8 +27,13 @@
             <p>Szerző: <%= row[2] %></p>
             <!-- Mufaj -->
             <p>Műfajok: <%= row[3] %></p>
+            <!-- Kiadó -->
+            <p>Kiadó: <%= row[6] %></p>
             <!-- Atlag rating -->
-            <p class="book-rating">Átlag értékelés: <%= row[5] == null ? "Nincs" : Math.round(row[5] * 100) / 100 %></p>
+            <div class="book-rating">
+              <img class="star-icon" src="images/star-solid.svg" />
+              <p> <%= row[5] == null ? "Nincs" : Math.round(row[5] * 100) / 100 %></p>
+            </div>
             <!-- Konyv ara-->
             <p class="book-price">Ár: <%= row[4] %> Ft</p>
           </div>
