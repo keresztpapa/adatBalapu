@@ -9,13 +9,14 @@ router.get("/", async (req, res) => {
     const connection = await getConnection();
 
     // Execute the SQL query to fetch the data
-    const result = await connection.client.execute("SELECT * FROM konyv");
-    console.log(result);
+    const konyv_adatok = await connection.client.execute("SELECT konyv.isbn, konyv.cim, szerzoje.szerzonev, mufaja.mufajnev, konyv.ar, (SELECT avg(ertekeles.pontszam) AS avg_rating FROM ertekeles WHERE ertekeles.isbn = konyv.isbn) FROM konyv, szerzoje, mufaja WHERE konyv.isbn = szerzoje.isbn AND konyv.isbn = mufaja.isbn");
+    
     // Release the connection back to the pool
     await connection.close();
 
+  
     // Render the data on an HTML page using a view template
-    res.render("konyvek", { rows: result.rows });
+    res.render("konyvek", { rows: konyv_adatok.rows });
   } catch (err) {
     console.error(err);
     res.status(500).send("Internal Server Error");

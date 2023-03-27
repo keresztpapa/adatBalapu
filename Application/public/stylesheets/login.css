@@ -49,19 +49,19 @@ body {
     width: fit-content;
     height: 40px;
     border-radius: 10px;
-    background-color: #e0f21d;
-    color: #000;
+    background-color: #b83a01;
+    color: white;
     cursor: pointer;
 }
 
 .form-submit:hover {
-    background-color: #8ead03;
+    background-color: #eca325;
     color: #fff;
 }
 
 .form-login {
     background-color: transparent;
-    color: #8ead03;
+    color: #b83a01;
     border: none;
     cursor: pointer;
     font-size: inherit;
@@ -70,5 +70,5 @@ body {
 }
 
 .form-login:hover {
-    color: #e0f21d;
+    color: #eca325;
 }

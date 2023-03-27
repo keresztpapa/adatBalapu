@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="stylesheets/style.css">
+  <link rel="stylesheet" href="stylesheets/books.css">
   <title>Könyvesbolt</title>
 </head>
 <body>
@@ -13,32 +14,30 @@
     
     <!-- Content area -->
     <div class="content">
-      <h2> Könyvek </h2>
-
-      <!-- Konyvek listazasa -->
-      <h1>Query Results</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Column 1</th>
-            <th>Column 2</th>
-            <th>Column 3</th>
-            <th>Column 4</th>
-            <!-- Add more column headers here -->
-          </tr>
-        </thead>
-        <tbody>
-          <% rows.forEach(function(row) { %>
-          <tr>
-            <td><%= row[0] %></td>
-            <td><%= row[1] %></td>
-            <td><%= row[2] %></td>
-            <td><%= row[3] %></td>
-            <!-- Add more columns here -->
-          </tr>
-          <% }); %>
-        </tbody>
-      </table>
+      <h1> Könyvek </h1>
+      
+      <div class="books-container">
+        <% rows.forEach(function(row) { %>
+        <div class="book">
+          
+          <div class="attributes-container">
+            <!-- Konyv cime -->
+            <h2 class="book-title"><%= row[1] %></h2>
+            <!-- Szerzo(k) -->
+            <p>Szerző: <%= row[2] %></p>
+            <!-- Mufaj -->
+            <p>Műfajok: <%= row[3] %></p>
+            <!-- Atlag rating -->
+            <p class="book-rating">Átlag értékelés: <%= row[5] == null ? "Nincs" : Math.round(row[5] * 100) / 100 %></p>
+            <!-- Konyv ara-->
+            <p class="book-price">Ár: <%= row[4] %> Ft</p>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+      
     </div>
+
+    <script src="javascripts/random_book_cover.js"></script>
   </body>
 </html>
