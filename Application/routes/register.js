@@ -42,11 +42,10 @@ router.post('/', async (req, res) => {
         console.log(email_exists);
 
         // Execute the SQL query to fetch the data
-        await connection.client.execute(`
-        INSERT INTO felhasznalo (email, nev, jelszo, cim, telefon, szerep)
-        VALUES ('${req.body.email}', '${req.body.username}', '${hashed_pw}',
-             '${req.body.address}', '${req.body.telephone}', 'USER') 
-        `);
+        await connection.client.execute(
+        `INSERT INTO felhasznalo (email, nev, jelszo, cim, telefon, szerep) 
+        VALUES ('${req.body.email}', '${req.body.username}', '${hashed_pw}','${req.body.address}', '${req.body.telephone}', 'user')`
+        );
         await connection.client.execute(`COMMIT`);
         console.log(`
         INSERT INTO felhasznalo (email, nev, jelszo, cim, telefon, szerep)
