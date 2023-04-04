@@ -9,15 +9,24 @@
 </head>
 <body>
     <h1>Regisztráció</h1>
-	<form class="form-container">
+	<form class="form-container" method="POST" action="/register">
+		<%  if (typeof(locals.errors) !== "undefined" && locals.errors.length !== 0) {
+				for (error of errors){ %> 
+					<span class="error-message"><%- error -%></span><br/>
+		<% 		}
+		} %>
+
 		<label class="form-label" for="username">Név:</label>
 		<input class="form-input" type="text" id="username" name="username" required>
 
+		<label class="form-label" for="email">Email:</label>
+		<input class="form-input" type="email" id="email" name="email" required>
+		
 		<label class="form-label" for="password">Jelszó:</label>
 		<input class="form-input" type="password" id="password" name="password" required>
 
-		<label class="form-label" for="email">Email:</label>
-		<input class="form-input" type="email" id="email" name="email" required>
+		<label class="form-label" for="password_again">Jelszó ismét:</label>
+		<input class="form-input" type="password" id="password_again" name="password_again" required>
 
 		<label class="form-label" for="address">Cím:</label>
 		<input class="form-input" type="text" id="address" name="address" required>
@@ -25,8 +34,10 @@
 		<label class="form-label" for="telephone">Telefonszám:</label>
 		<input class="form-input" type="tel" id="telephone" name="telephone" required>
 
-		<label class="form-checkbox-label" for="policy">Elfogadom a szerződési feltételeket:</label>
 		<input class="form-checkbox" type="checkbox" id="policy" name="policy" required>
+		<label class="form-checkbox-label" for="policy">
+			Elfogadom a <a id="policy-a" target="_blank" href="https://checkbox.toys/catch/">szerződési feltételeket</a>
+		</label>
 
 		<input class="form-submit" type="submit" value="Regisztrálok">
 	</form>

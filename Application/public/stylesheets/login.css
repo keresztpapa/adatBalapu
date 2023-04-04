@@ -23,12 +23,21 @@ body {
 
 .form-input {
     display: block;
+    background-color: #FEE;
     width: 95%;
     padding: 10px;
     border: none;
     border-radius: 5px;
     margin-bottom: 10px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-input:focus {
+    background-color: #FEF;
+}
+
+#policy-a {
+    color:#b83a01;
 }
 
 .form-checkbox-label {
@@ -41,6 +50,7 @@ body {
     margin-bottom: 30px;
     width: 15px;
     height: 15px;
+    vertical-align: -2px;
 }
 
 .form-submit {
@@ -71,4 +81,8 @@ body {
 
 .form-login:hover {
     color: #eca325;
+}
+
+.error-message {
+    color: #b83a01;
 }
