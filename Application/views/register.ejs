@@ -10,11 +10,13 @@
 <body>
     <h1>Regisztráció</h1>
 	<form class="form-container" method="POST" action="/register">
-		<%  if (typeof(locals.errors) !== "undefined" && locals.errors.length !== 0) {
-				for (error of errors){ %> 
+		<%  if (typeof(locals.errors) !== "undefined" && locals.errors.length !== 0) {	%>
+			<div id="errors">
+		<%	for (error of errors){ %> 
 					<span class="error-message"><%- error -%></span><br/>
-		<% 		}
-		} %>
+		<% 		} %>
+			</div>	
+		<% } %>
 
 		<label class="form-label" for="username">Név:</label>
 		<input class="form-input" type="text" id="username" name="username" required>
