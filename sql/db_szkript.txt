@@ -62,7 +62,7 @@ CREATE TABLE SCOTT.mufaja (
 CREATE TABLE SCOTT.felhasznalo(
   email VARCHAR2(100) CONSTRAINT usr_email_pk PRIMARY KEY,
   nev VARCHAR2(100) CONSTRAINT usr_nev_nn NOT NULL,
-  jelszo VARCHAR2(32) CONSTRAINT usr_jelszo_nn NOT NULL,
+  jelszo VARCHAR2(128) CONSTRAINT usr_jelszo_nn NOT NULL,
   cim VARCHAR(100),
   telefon VARCHAR(20) CONSTRAINT usr_telefon_nn NOT NULL,
   szerep VARCHAR(10) CONSTRAINT usr_szerep_nn NOT NULL
