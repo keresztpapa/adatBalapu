@@ -29,11 +29,16 @@
 
       <% if (columnNames !== undefined) { %>
       <!-- Dynamic form -->
-      <form id="newRecordForm" class="record-form" method="POST" onsubmit="submitNewRecord()">
+      <form
+        id="newRecordForm"
+        class="record-form"
+        method="POST"
+        onsubmit="submitNewRecord()"
+      >
         <% for (let i = 0; i < formFields.length; i++) { %>
         <div class="form-field">
           <label class="form-label">
-            <%= formFields[i].label %> 
+            <%= formFields[i].label %>
             <!-- 
               <% if (formFields[i].required) { %>
               <span class="required">*</span>
@@ -41,17 +46,28 @@
             -->
           </label>
           <% if (formFields[i].type === 'text') { %>
-          <input class="form-input" type="text" name="<%= formFields[i].name %>" />
+          <input
+            class="form-input"
+            type="text"
+            name="<%= formFields[i].name %>"
+          />
           <% } else if (formFields[i].type === 'email') { %>
-          <input class="form-input" type="email" name="<%= formFields[i].name %>" />
+          <input
+            class="form-input"
+            type="email"
+            name="<%= formFields[i].name %>"
+          />
           <% } else if (formFields[i].type === 'number') { %>
-          <input class="form-input" type="number" name="<%= formFields[i].name %>" />
+          <input
+            class="form-input"
+            type="number"
+            name="<%= formFields[i].name %>"
+          />
           <% } %>
         </div>
         <% } %>
         <button class="form-submit-button" type="submit">Submit</button>
       </form>
-      
 
       <!-- Table data -->
       <table>
@@ -81,7 +97,7 @@
       }
       function submitNewRecord() {
         let currentUrl = window.location.href;
-        const form = document.getElementById('newRecordForm');
+        const form = document.getElementById("newRecordForm");
         form.action = `${currentUrl}/submitNewRecord`;
       }
     </script>

@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 const { getConnection } = require("../database");
 
-/* GET users listing. */
+/* GET listings. */
 router.get("/", function (req, res, next) {
   res.render("admin");
 });
@@ -75,13 +75,13 @@ router.post("/:table/submitNewRecord", async (req, res) => {
         return value;
       }
     }).join(', ');
-    
-    console.log(dataToInsert); 
+
+    console.log(dataToInsert);
     console.log("SQL Query: \n");
     console.log(`INSERT INTO ${table_name} VALUES (${dataToInsert})`);
     // Dynamically add new data to table
     await connection.client.execute(
-    `INSERT INTO ${table_name} VALUES (${dataToInsert})`
+      `INSERT INTO ${table_name} VALUES (${dataToInsert})`
     );
     await connection.client.execute(`COMMIT`);
 
@@ -91,13 +91,13 @@ router.post("/:table/submitNewRecord", async (req, res) => {
     await connection.close();
 
     // Render the data on an HTML page using a view template
-} catch (err) {
+  } catch (err) {
     console.error(err);
     res.status(500).send("Internal Server Error");
-}
+  }
 
-res.redirect(`/admin/${table_name}`);
-return;
+  res.redirect(`/admin/${table_name}`);
+  return;
 });
 
 module.exports = router;
