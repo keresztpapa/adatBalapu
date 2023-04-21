@@ -96,9 +96,7 @@ router.post("/:table/submitNewRecord", async (req, res) => {
     res.status(500).send("Internal Server Error");
 }
 
-
-// TODO reroute somewhere
-
+res.redirect(`/admin/${table_name}`);
 return;
 });
 
