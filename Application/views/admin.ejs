@@ -27,12 +27,38 @@
         <option value="/admin/uzlet">Üzletek</option>
       </select>
 
-      <% if (column_names !== undefined) { %>
+      <% if (columnNames !== undefined) { %>
+      <!-- Dynamic form -->
+      <form id="newRecordForm" class="record-form" method="POST" onsubmit="submitNewRecord()">
+        <% for (let i = 0; i < formFields.length; i++) { %>
+        <div class="form-field">
+          <label class="form-label">
+            <%= formFields[i].label %> 
+            <!-- 
+              <% if (formFields[i].required) { %>
+              <span class="required">*</span>
+              <% } %> 
+            -->
+          </label>
+          <% if (formFields[i].type === 'text') { %>
+          <input class="form-input" type="text" name="<%= formFields[i].name %>" />
+          <% } else if (formFields[i].type === 'email') { %>
+          <input class="form-input" type="email" name="<%= formFields[i].name %>" />
+          <% } else if (formFields[i].type === 'number') { %>
+          <input class="form-input" type="number" name="<%= formFields[i].name %>" />
+          <% } %>
+        </div>
+        <% } %>
+        <button class="form-submit-button" type="submit">Submit</button>
+      </form>
+      
+
+      <!-- Table data -->
       <table>
         <thead>
           <tr>
-            <% for (let i = 0; i < column_names.length; i++) { %>
-            <th><%= column_names[i] %></th>
+            <% for (let i = 0; i < columnNames.length; i++) { %>
+            <th><%= columnNames[i] %></th>
             <% } %>
           </tr>
         </thead>
@@ -52,6 +78,11 @@
     <script type="text/javascript">
       function handleSelect(elm) {
         window.location = elm.value;
+      }
+      function submitNewRecord() {
+        let currentUrl = window.location.href;
+        const form = document.getElementById('newRecordForm');
+        form.action = `${currentUrl}/submitNewRecord`;
       }
     </script>
   </body>
