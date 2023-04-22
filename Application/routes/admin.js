@@ -21,10 +21,35 @@ router.get('/admin', isLoggedIn, isAdmin, (req, res) => {
 });
 
 /*
+router.get('/', isAuthenticated(), function(req, res, next) {
+  res.render('admin');
+});
+*/
+
+function isLoggedIn(req, res, next) {
+  if (req.session.user) {
+    return next();
+  }
+  res.redirect('/login');
+}
+
+function isAdmin(req, res, next) {
+  if (req.session.user && req.session.user.isAdmin) {
+    return next();
+  }
+  res.redirect('/');
+}
+
+router.get('/admin', isLoggedIn, isAdmin, (req, res) => {
+  res.render('admin');
+});
+
+/*
 // GET listings. 
 router.get("/", function (req, res, next) {
   res.render("admin");
 });
+*/
 */
 
 router.get("/:table", isLoggedIn, isAdmin, async (req, res) => {
@@ -65,7 +90,12 @@ router.get("/:table", isLoggedIn, isAdmin, async (req, res) => {
     req.session.columnNames = columnNames.rows;
     req.session.rows = data.rows;
 
+    req.session.table = table_name;
+    req.session.columnNames = columnNames.rows;
+    req.session.rows = data.rows;
+
     // Render the data on an HTML page using a view template
+    res.render("admin", { tableName: table_name, rows: data.rows, columnNames: columnNames.rows, formFields: formFields });
     res.render("admin", { tableName: table_name, rows: data.rows, columnNames: columnNames.rows, formFields: formFields });
   } catch (err) {
     console.error(err);
@@ -116,7 +146,7 @@ router.post("/:table/submitNewRecord", isLoggedIn, isAdmin, async (req, res) => 
 
     // Render the data on an HTML page using a view template
   } catch (err) {
-    console.error(err + err.message);
+    console.error(err.message);
     res.status(500).send("Internal Server Error");
   }
 
@@ -158,8 +188,9 @@ router.get("/:table/deleteRecord/:i", async (req, res) => {
     // Release the connection back to the pool
     await connection.close();
 
+    // Render the data on an HTML page using a view template
   } catch (err) {
-    console.error(err + err.message);
+    console.error(err.message);
     res.status(500).send("Internal Server Error");
     return;
   }

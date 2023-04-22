@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="stylesheets/style.css">
   <link rel="stylesheet" href="stylesheets/books.css">
   <script src="javascripts/cartFunction.js"></script>
+  <script src="javascripts/random_book_cover.js"></script>
+
   <title>Könyvesbolt</title>
 </head>
 <body>
@@ -39,11 +41,10 @@
             <!-- Konyv ara-->
             <button onclick="addToCart('<%= row[0] %>')" data-isbn="<%= row[0] %>" class="book-price">Ár: <%= row[4] %> Ft</button>
           </div>
-          <button onclick="addToCart('<%= row[0] %>')" class="add-to-cart" data-isbn="<%= row[0] %>">Kosárba</button>
         </div>
         <% }); %>
       </div>    
+      </div>    
     </div>
-    <script src="javascripts/random_book_cover.js"></script>
   </body>
 </html>
