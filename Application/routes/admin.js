@@ -1,9 +1,16 @@
 var express = require("express");
 var router = express.Router();
 const { getConnection } = require("../database");
-const { perm } = require("../permission");
 
-/* GET listings. */
+//const { isAuthenticated } = require('../permission');
+
+/*
+router.get('/', isAuthenticated(), function(req, res, next) {
+  res.render('admin');
+});
+*/
+
+// GET listings. 
 router.get("/", function (req, res, next) {
   res.render("admin");
 });

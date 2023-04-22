@@ -28,25 +28,39 @@ router.get("/", async (req, res) => {
   }
 });
 
-app.post('/kosar/add', function(req, res, next) {
-  var isbn = req.body.isbn;
-  var quantity = req.body.quantity;
-  
-  var itemIndex = req.session.cart.findIndex(function(item) {
-    return item.isbn === isbn;
-  });
-  
-  if (itemIndex !== -1) {
-    req.session.cart[itemIndex].quantity += parseInt(quantity);
-  } 
-  else {
-    req.session.cart.push({
-      isbn: isbn,
-      quantity: parseInt(quantity)
-    });
+router.post('/kosar/add/:isbn', async (req, res) => {
+  const isbn = req.body.isbn;
+  const quantity = req.body.quantity;
+  const email = null;
+  const hova = null;
+
+  try {
+    connection = await oracledb.getConnection();
+
+    const result = await connection.execute(
+      `INSERT INTO tetel (id, email, isbn, darabszam, hova) VALUES (cart_seq.NEXTVAL, :email, :isbn, :quantity, :hova)`,
+      {
+        email: email,
+        isbn: isbn,
+        quantity: quantity,
+        hova: hova
+      },
+      { autoCommit: true }
+    );
+
+    console.log("Rows inserted: " + result.rowsAffected);
+  } catch (err) {
+    console.error(err);
+  } finally {
+    if (connection) {
+      try {
+        await connection.close();
+      } catch (err) {
+        console.error(err);
+      }
+    }
   }
-  
+
   res.redirect('/konyvek/' + isbn);
 });
-
 module.exports = router;

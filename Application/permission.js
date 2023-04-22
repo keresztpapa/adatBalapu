@@ -20,10 +20,16 @@ function addUser(username, role) {
 
 function isAuthenticated(req, res, next) {
     if (req.session && req.session.user) {
-      return next();
+      if (req.session.user == "admin") {
+        return next();
+      } else {
+        return res.status(403).send('Forbidden');
+      }
+    } else {
+      return res.status(401).send('Unauthorized');
     }
-    return res.status(401).send('Unauthorized');
   }
+
 
 exports.hasPermission = hasPermission;
 exports.addUser = addUser;

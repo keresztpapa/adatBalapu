@@ -4,24 +4,32 @@ var router = express.Router();
 const { getConnection } = require("../database");
 const { render } = require('ejs');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-    res.render("kosar");
+
+// GET users listing. 
+router.get('/', async (req, res) => {
+  try {
+    const conn = await getConnection();
+
+    const result = await conn.client.execute(`SELECT id, email, isbn, darabszam, hova FROM tetel`);
+
+    res.render('kosar', { data: result.rows });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error 1');
+  }
 });
 
-router.get('/orders', async (req, res) => {
-    try {
-      const conn = await getConnection();
-  
-      const result = await conn.execute( `SELECT id, email, isbn, darabszam, hova FROM orders`);
-  
-      await conn.release();
-      
-      res.render('orders', { orders: result.rows });
-    } catch (err) {
-      console.error(err);
-      res.status(500).send('Internal Server Error');
-    }
-  });
+router.get('/kosar/add/:isbn', async (req, res) => {
+  try {
+    const conn = await getConnection();
+
+    const result = await conn.client.execute(`SELECT id, email, isbn, darabszam, hova FROM tetel`);
+
+    res.render('kosar', { data: result.rows });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error 1');
+  }
+});
 
 module.exports = router;
