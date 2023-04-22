@@ -28,4 +28,25 @@ router.get("/", async (req, res) => {
   }
 });
 
+app.post('/kosar/add', function(req, res, next) {
+  var isbn = req.body.isbn;
+  var quantity = req.body.quantity;
+  
+  var itemIndex = req.session.cart.findIndex(function(item) {
+    return item.isbn === isbn;
+  });
+  
+  if (itemIndex !== -1) {
+    req.session.cart[itemIndex].quantity += parseInt(quantity);
+  } 
+  else {
+    req.session.cart.push({
+      isbn: isbn,
+      quantity: parseInt(quantity)
+    });
+  }
+  
+  res.redirect('/konyvek/' + isbn);
+});
+
 module.exports = router;

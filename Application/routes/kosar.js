@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/orders', async (req, res) => {
     try {
-      const connection = await getConnection();
+      const conn = await getConnection();
   
       const result = await conn.execute( `SELECT id, email, isbn, darabszam, hova FROM orders`);
   
