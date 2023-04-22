@@ -16,5 +16,27 @@
     <div class="content">
       <h2> Kosár </h2>
     </div>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Email</th>
+          <th>ISBN</th>
+          <th>Darabszam</th>
+          <th>Hova</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data.forEach(function(row) { %>
+        <tr>
+          <td><%= row.id %></td>
+          <td><%= row.email %></td>
+          <td><%= row.isbn %></td>
+          <td><%= row.darabszam %></td>
+          <td><%= row.hova %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
   </body>
 </html>
