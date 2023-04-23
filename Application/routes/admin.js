@@ -61,8 +61,12 @@ router.get("/:table", isLoggedIn, isAdmin, async (req, res) => {
 
     await connection.close();
 
+    req.session.table = table_name;
+    req.session.columnNames = columnNames.rows;
+    req.session.rows = data.rows;
+
     // Render the data on an HTML page using a view template
-    res.render("admin", { rows: data.rows, columnNames: columnNames.rows, formFields: formFields });
+    res.render("admin", { tableName: table_name, rows: data.rows, columnNames: columnNames.rows, formFields: formFields });
   } catch (err) {
     console.error(err);
     res.status(500).send("Internal Server Error");
@@ -112,12 +116,63 @@ router.post("/:table/submitNewRecord", isLoggedIn, isAdmin, async (req, res) => 
 
     // Render the data on an HTML page using a view template
   } catch (err) {
-    console.error(err);
+    console.error(err.message);
     res.status(500).send("Internal Server Error");
   }
 
   res.redirect(`/admin/${table_name}`);
   return;
 });
+
+
+// delete record button handler
+router.get("/:table/deleteRecord/:i", async (req, res) => {
+  // Logging some stuff
+  console.log(req.body);
+  let table_name = req.params["table"];
+  let row_at = req.params["i"];
+
+  try {
+    // Get a connection to the Oracle database
+    const connection = await getConnection();
+
+    let conditions = '';
+    let columnNames = req.session.columnNames;
+    let rows = req.session.rows;
+    for (let i = 0; i < columnNames.length; ++i){
+      if (i !== 0) conditions += ' AND ';
+      if (isInteger(rows[row_at][i]))
+        conditions += `${columnNames[i]} = ${rows[row_at][i]}`;
+      else if (rows[row_at][i] === null)
+        conditions += `${columnNames[i]} IS NULL`;
+      else conditions += `${columnNames[i]} LIKE '${rows[row_at][i]}'`;
+    }
+
+    console.log("SQL Query: \n");
+    console.log(`DELETE FROM ${table_name} WHERE ` + conditions);
+    await connection.client.execute(
+      `DELETE FROM ${table_name} WHERE ` + conditions
+    );
+    await connection.client.execute(`COMMIT`);
+
+    // Release the connection back to the pool
+    await connection.close();
+
+    // Render the data on an HTML page using a view template
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Internal Server Error");
+    return;
+  }
+
+  res.redirect(`/admin/${table_name}`);
+  return;
+});
+
+function isInteger(str) {
+  // Regular expression that matches an optional "-" sign followed by one or more digits
+  const integerPattern = /^-?\d+$/;
+  return integerPattern.test(str);
+}
 
 module.exports = router;
