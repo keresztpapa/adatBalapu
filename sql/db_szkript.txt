@@ -20,7 +20,7 @@ CREATE TABLE SCOTT.uzlet (
 
 CREATE TABLE SCOTT.konyv (
   isbn VARCHAR2(13) CONSTRAINT knyv_isbn_pk PRIMARY KEY,
-  boritokep BLOB,
+  boritokep VARCHAR2(200),
   ar NUMBER(10, -1) CONSTRAINT knyv_ar_nn NOT NULL,
   kotes VARCHAR2(20),
   cim VARCHAR2(100) CONSTRAINT knyv_cim_nn NOT NULL,

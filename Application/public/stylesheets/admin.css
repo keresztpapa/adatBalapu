@@ -110,3 +110,7 @@ select option {
   outline: none;
   box-shadow: 0 0 4px #79121a;
 }
+
+a:has(button) {
+  text-decoration: none;
+}
