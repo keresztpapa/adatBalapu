@@ -27,16 +27,47 @@ router.get("/", async (req, res) => {
   }
 });
 
-//router.post('/kosar/add/:isbn', async (req, res) => {
-  router.post('/add_into_cart', async (req, res) => {
+
+router.post('/add_into_cart', async (req, res) => {
     const isbn = req.body.isbn;
+    const quantity = 1;
+    const email = "Michael_Thompson@gmail.com";
+    const hova = "6023 Bailey Mountain Nicholasstad, NV 96739";
+
     console.log(`Received ISBN: ${isbn}`);
-    res.json({ title: "Example book" });
+    try {
+      // Get a connection to the Oracle database
+      const connection = await getConnection();
+  
+    const result = await connection.client.execute(
+      `SELECT tetel.id FROM tetel`
+    );
+    const nextId = result.rows[0];
+
+    // Insert the new item into the cart using the next available id
+    const insertResult = await connection.client.execute(
+      `INSERT INTO tetel (id, email, isbn, darabszam, hova)
+       VALUES (:id, :email, :isbn, :quantity, :hova)`,
+      [nextId+1, email, isbn, quantity, hova]
+    );
+        
+      console.log("Rows inserted: " + result.rowsAffected);
+  
+      // Release the connection back to the pool
+      await connection.close();
+  
+      // Send a success response back to the client
+      res.status(200).json({message: "Item added to cart."});
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({message: "Internal server error"});
+    }
   });
 
 module.exports = router;
 
 /*
+//router.post('/kosar/add/:isbn', async (req, res) => {
   const isbn = req.params.isbn;
   const quantity = 1;
   const email = null;

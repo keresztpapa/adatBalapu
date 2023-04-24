@@ -40,7 +40,7 @@
             <!-- Konyv ara-->
             <p class="book-price">Ár: <%= row[4] %> Ft</p>
           </div>
-          <button onclick="addToCart('<%= row[0] %>')" class="add-to-cart" data-isbn="<%= row[0] %>">Kosárba</button>
+          <td><button onclick="addToCart('<%= row[0] %>')">Add to Cart</button></td>
         </div>
         <% }); %>
       </div>    
