@@ -19,7 +19,8 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/kosar/add/:isbn', async (req, res) => {
+router.get('/kosar', async (req, res) => {
+/*  
   try {
     const conn = await getConnection();
 
@@ -30,6 +31,7 @@ router.get('/kosar/add/:isbn', async (req, res) => {
     console.error(err);
     res.status(500).send('Internal Server Error 1');
   }
+  */
 });
 
 module.exports = router;
