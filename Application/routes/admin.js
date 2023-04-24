@@ -2,12 +2,32 @@ var express = require("express");
 var router = express.Router();
 const { getConnection } = require("../database");
 
-/* GET listings. */
+function isLoggedIn(req, res, next) {
+  if (req.session.user) {
+    return next();
+  }
+  res.redirect('/login');
+}
+
+function isAdmin(req, res, next) {
+  if (req.session.user && req.session.user.isAdmin) {
+    return next();
+  }
+  res.redirect('/');
+}
+
+router.get('/admin', isLoggedIn, isAdmin, (req, res) => {
+  res.render('admin');
+});
+
+/*
+// GET listings. 
 router.get("/", function (req, res, next) {
   res.render("admin");
 });
+*/
 
-router.get("/:table", async (req, res) => {
+router.get("/:table", isLoggedIn, isAdmin, async (req, res) => {
   console.log(req.params);
   var table_name = req.params["table"];
   if (table_name === undefined) table_name = "konyv";
@@ -54,7 +74,7 @@ router.get("/:table", async (req, res) => {
 });
 
 // New record submit form handler
-router.post("/:table/submitNewRecord", async (req, res) => {
+router.post("/:table/submitNewRecord", isLoggedIn, isAdmin, async (req, res) => {
   // Logging some stuff
   console.log(req.body);
   var table_name = req.params["table"];
