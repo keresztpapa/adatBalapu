@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="stylesheets/style.css">
   <link rel="stylesheet" href="stylesheets/books.css">
-  <script src="javascripts/random_book_cover.js"></script>
   <script src="javascripts/cartFunction.js"></script>
   <title>Könyvesbolt</title>
 </head>
@@ -24,7 +23,7 @@
           
           <div class="attributes-container">
             <!-- Konyv cime -->
-            <p>ISBN <%= row[0] %></p>
+            <!-- <p>ISBN <%= row[0] %></p> -->
             <h2 class="book-title"><%= row[1] %></h2>
             <!-- Szerzo(k) -->
             <p>Szerző: <%= row[2] %></p>
@@ -38,12 +37,13 @@
               <p> <%= row[5] == null ? "Nincs" : Math.round(row[5] * 100) / 100 %></p>
             </div>
             <!-- Konyv ara-->
-            <p class="book-price">Ár: <%= row[4] %> Ft</p>
+            <button onclick="addToCart('<%= row[0] %>')" data-isbn="<%= row[0] %>" class="book-price">Ár: <%= row[4] %> Ft</button>
           </div>
-          <td><button onclick="addToCart('<%= row[0] %>')">Add to Cart</button></td>
+          <button onclick="addToCart('<%= row[0] %>')" class="add-to-cart" data-isbn="<%= row[0] %>">Kosárba</button>
         </div>
         <% }); %>
       </div>    
     </div>
+    <script src="javascripts/random_book_cover.js"></script>
   </body>
 </html>
