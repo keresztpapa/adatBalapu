@@ -5,6 +5,7 @@ const { getConnection } = require("../database");
 router.get("/", async (req, res) => {
   try {
     console.log("ASD");
+    console.log("ASD");
     // Get a connection to the Oracle database
     const connection = await getConnection();
 
@@ -27,6 +28,11 @@ router.get("/", async (req, res) => {
   }
 });
 
+//router.post('/kosar/add/:isbn', async (req, res) => {
+router.post('/add_into_cart', async (req, res) => {
+  console.log("BENNE VAN AZ API-ba");
+
+});
 
 router.post('/add_into_cart', async (req, res) => {
     const isbn = req.body.isbn;
