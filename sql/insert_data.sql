@@ -1,8 +1,9 @@
 
+Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('konradfeher@outlook.com', 'Konialli', '$2b$10$H/F6zq9591bv8BhXOnLp5u0N6Gf70FXHtks2F5ljs/TvyOg0wSv3O', 'Kalvaria 20', '+36305515525', 'admin');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Bridget_Martin@gmail.com','Bridget Martin','force','01361 Dustin Street Apt. 350
-New Tylerland, NY 90272','064-822-','guest');
+New Tylerland, NY 90272','064-822-','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Diana_Swanson@gmail.com','Diana Swanson','head','8311 Freeman Glens
-Herrerabury, PA 52113','001-070-088-','guest');
+Herrerabury, PA 52113','001-070-088-','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Sarah_Griffin@gmail.com','Sarah Griffin','many','992 Frank Orchard Suite 167
 East Jenniferfort, FL 09428','696646','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('William_Gonzalez@gmail.com','William Gonzalez','law','773 Adams Ramp
@@ -38,21 +39,21 @@ Jenningsfurt, CO 59264','(783)930-3802','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Maria_Scott@gmail.com','Maria Scott','keep','051 Monica Street Suite 649
 Coleberg, OH 19764','695-024-','admin');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Amber_Valenzuela@gmail.com','Amber Valenzuela','race','28075 Emily Plaza
-New Brooke, NV 68086','001-043-789-9139x','guest');
+New Brooke, NV 68086','001-043-789-9139x','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Arthur_Waters@gmail.com','Arthur Waters','across','84935 April Land Apt. 225
-Watsonview, MA 44497','001-352-771-9768x6','guest');
+Watsonview, MA 44497','001-352-771-9768x6','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Holly_Hall@gmail.com','Holly Hall','responsibility','674 Erica Branch
-Cruztown, KY 39190','158-750-','guest');
+Cruztown, KY 39190','158-750-','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Joseph_Cox@gmail.com','Joseph Cox','seem','01648 Smith Road Apt. 924
 Lake Annette, CO 51125','514-883-','admin');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Amber_Sutton@gmail.com','Amber Sutton','usually','40888 Vazquez Stream
 North Bradleyville, OH 13027','384-896-9326x4','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Michael_Thompson@gmail.com','Michael Thompson','along','6023 Bailey Mountain
-Nicholasstad, NV 96739','569.169.0555x','guest');
+Nicholasstad, NV 96739','569.169.0555x','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Kent_Conner@gmail.com','Kent Conner','he','116 Michelle Motorway
 Fordshire, KY 30599','311-422-','admin');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Andrea_Matthews@gmail.com','Andrea Matthews','level','314 Dean Pass
-Rodriguezville, DE 34166','873-858-4026x0','guest');
+Rodriguezville, DE 34166','873-858-4026x0','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Gary_Stewart@gmail.com','Gary Stewart','major','08252 Gray Spring
 North Mikaylastad, MN 36205','117-231-1562x','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Elizabeth_Taylor@gmail.com','Elizabeth Taylor','major','6925 Patricia Dam Suite 805
@@ -62,19 +63,19 @@ Robertsstad, NY 56702','(729)982-9926','admin');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Alyssa_Gonzalez@gmail.com','Alyssa Gonzalez','technology','628 Nathan Parks
 Patriciastad, IN 74751','976.158.','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Martha_Shaw@gmail.com','Martha Shaw','page','57053 Anthony Lane Apt. 571
-New Sethmouth, IL 23954','(386)978-7823','guest');
+New Sethmouth, IL 23954','(386)978-7823','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Maria_Parker@gmail.com','Maria Parker','peace','54848 Sanchez Flats
-East Michaelstad, PW 49225','(433)900-5709x','guest');
+East Michaelstad, PW 49225','(433)900-5709x','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Austin_Bell@gmail.com','Austin Bell','short','7967 Hooper Center Apt. 129
 Robertfort, MO 60990','+1-799-217-','admin');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Robert_Allen@gmail.com','Robert Allen','I','830 Burke Trail
 Gonzalezville, MI 20116','001-058-352-5646x','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Kaitlin_Walsh@gmail.com','Kaitlin Walsh','deal','Unit 8691 Box 8012
-DPO AA 37618','001-979-633-1788','guest');
+DPO AA 37618','001-979-633-1788','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Vanessa_Ortiz@gmail.com','Vanessa Ortiz','dream','Unit 6182 Box 6564
 DPO AP 78441','102-584-','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Madison_Lowe@gmail.com','Madison Lowe','pretty','82519 Mcguire Green Apt. 066
-North Holly, SD 24328','(618)105-','guest');
+North Holly, SD 24328','(618)105-','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Amanda_Carney@gmail.com','Amanda Carney','already','812 Russell Freeway Suite 306
 Jaredfurt, VI 03329','100.715.5924x6','admin');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Rebecca_Espinoza@gmail.com','Rebecca Espinoza','wait','963 Bennett Inlet Apt. 715
@@ -84,17 +85,17 @@ East Raymond, DC 34798','(739)579-','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Darius_Wilcox@gmail.com','Darius Wilcox','never','5618 Lam Plaza
 Rodriguezfurt, IL 47224','025-902-3597x0','admin');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('David_Hayden@gmail.com','David Hayden','technology','Unit 0584 Box 0967
-DPO AP 87913','252.195.0306x2','guest');
+DPO AP 87913','252.195.0306x2','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Jennifer_Patterson@gmail.com','Jennifer Patterson','north','46034 Taylor Radial
 Cindychester, IN 50558','248.003.','admin');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Karen_Jones@gmail.com','Karen Jones','kid','0687 Dustin Ridge Suite 409
 East Miguelville, KS 30735','286.213.3869x','admin');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Natalie_Taylor@gmail.com','Natalie Taylor','sell','711 Johnson Lakes
-Lake Justin, VA 91174','001-261-652-','guest');
+Lake Justin, VA 91174','001-261-652-','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Robert_Johnson@gmail.com','Robert Johnson','finally','PSC 2873, Box 4823
 APO AE 83082','+1-430-747-','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Dustin_Gross@gmail.com','Dustin Gross','key','USCGC Mitchell
-FPO AE 29900','727.292.1750x6','guest');
+FPO AE 29900','727.292.1750x6','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Caitlyn_Castillo@gmail.com','Caitlyn Castillo','speech','USCGC Smith
 FPO AP 03801','681-178-0480x','admin');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Donna_Gamble@gmail.com','Donna Gamble','from','Unit 3402 Box 5976
@@ -102,7 +103,7 @@ DPO AP 80188','(157)359-','admin');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Robert_Smith@gmail.com','Robert Smith','discover','PSC 9423, Box 0540
 APO AA 98505','251.234.5408x','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Matthew_Richmond@gmail.com','Matthew Richmond','science','01604 Silva Manor Apt. 153
-Annettefurt, OH 75682','630-488-7008x4','guest');
+Annettefurt, OH 75682','630-488-7008x4','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('David_Taylor@gmail.com','David Taylor','drop','144 Mark Drives
 Ashleymouth, LA 01447','+1-425-021-8535x0','admin');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Casey_Costa@gmail.com','Casey Costa','million','2974 Fitzpatrick Glen
@@ -114,47 +115,47 @@ New Jose, PW 80473','(165)037-9951x1','admin');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Deborah_Townsend@gmail.com','Deborah Townsend','here','271 Jason Forest Suite 228
 Jacksonmouth, PW 61917','843225','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Shannon_Ochoa@gmail.com','Shannon Ochoa','collection','75824 Kristen Points Suite 745
-Lake Ericfurt, DE 26040','806736','guest');
+Lake Ericfurt, DE 26040','806736','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Jennifer_Stephenson@gmail.com','Jennifer Stephenson','card','6749 Rita Rest Apt. 343
-Shirleymouth, CO 50664','001-360-492-8709','guest');
+Shirleymouth, CO 50664','001-360-492-8709','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('James_Brown@gmail.com','James Brown','collection','94986 Dunn Points Apt. 394
-Lake Amyberg, TN 19688','001-818-266-','guest');
+Lake Amyberg, TN 19688','001-818-266-','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Rebecca_Bishop@gmail.com','Rebecca Bishop','event','USS Greene
 FPO AE 58746','748.765.','admin');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Kenneth_Johnson@gmail.com','Kenneth Johnson','environment','7976 Tanner Forge
 Richardborough, NC 65474','672704','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Kelly_Woodward@gmail.com','Kelly Woodward','of','20905 Hill Pine
-Port Joshua, OH 79286','+1-460-498-8773','guest');
+Port Joshua, OH 79286','+1-460-498-8773','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Theresa_Alvarez@gmail.com','Theresa Alvarez','down','02249 Brittany Squares
 East Michelle, CO 60428','(304)848-7685x','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Kerry_Morales@gmail.com','Kerry Morales','kitchen','24005 Christine Flat Suite 722
-Lake Baileyport, MI 36556','(824)518-','guest');
+Lake Baileyport, MI 36556','(824)518-','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Michael_Mckenzie@gmail.com','Michael Mckenzie','energy','PSC 2516, Box 2427
-APO AA 19435','(296)204-','guest');
+APO AA 19435','(296)204-','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Kenneth_Wright@gmail.com','Kenneth Wright','long','USNS Collins
 FPO AA 70379','001-991-101-9122x','admin');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Deanna_Hall@gmail.com','Deanna Hall','result','8170 Michael Track
-Brentmouth, SC 91118','620.338.7747x','guest');
+Brentmouth, SC 91118','620.338.7747x','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Christopher_Jensen@gmail.com','Christopher Jensen','clear','5496 Roberts Street
-Chelseabury, OH 67837','+1-805-893-','guest');
+Chelseabury, OH 67837','+1-805-893-','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Ashlee_Hardy@gmail.com','Ashlee Hardy','sort','PSC 4255, Box 5879
-APO AA 37475','+1-507-637-9312x7','guest');
+APO AA 37475','+1-507-637-9312x7','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Steven_Salazar@gmail.com','Steven Salazar','occur','00493 Parker Lodge
 Port Abigail, AR 73517','843-916-6191x0','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Aaron_Jackson@gmail.com','Aaron Jackson','recently','74318 Morris Lodge Suite 927
 South Steven, OR 18141','(598)884-4008','admin');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Katelyn_Martin@gmail.com','Katelyn Martin','senior','4515 Wilcox River
-West Brenda, ME 41808','810-548-2226x','guest');
+West Brenda, ME 41808','810-548-2226x','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Melissa_Smith@gmail.com','Melissa Smith','country','USNS Ramos
-FPO AA 59785','938-132-6646x0','guest');
+FPO AA 59785','938-132-6646x0','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Rebecca_Houston@gmail.com','Rebecca Houston','major','211 Ramirez Divide Suite 938
-West Maryfurt, MO 83139','631110','guest');
+West Maryfurt, MO 83139','631110','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('George_Taylor@gmail.com','George Taylor','window','5428 Reyes Mountains Suite 296
 Colinshire, VA 43383','001-520-157-5351x6','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Miranda_Hernandez@gmail.com','Miranda Hernandez','forward','89742 Spencer Stream
 New Elizabeth, CO 24715','791.700.0068x7','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Robert_Rocha@gmail.com','Robert Rocha','writer','04887 Nathan Hill Suite 727
-East Troyfurt, IN 78591','001-332-426-7839','guest');
+East Troyfurt, IN 78591','001-332-426-7839','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Matthew_White@gmail.com','Matthew White','consumer','USNS Brown
 FPO AA 61874','+1-207-321-','admin');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Susan_King@gmail.com','Susan King','detail','74725 Michael Rapids
@@ -164,17 +165,17 @@ Edwardview, FM 73388','703272','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Meagan_Vega@gmail.com','Meagan Vega','turn','586 Baker View Apt. 178
 North Sarahport, IN 52918','+1-942-125-1308x','admin');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Lauren_Nielsen@gmail.com','Lauren Nielsen','power','837 Hernandez Underpass
-Johnsontown, OH 22579','(406)196-2591x','guest');
+Johnsontown, OH 22579','(406)196-2591x','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Lisa_Espinoza@gmail.com','Lisa Espinoza','number','84878 Penny Turnpike Suite 490
 Kellyborough, TX 78299','624-963-2969','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Richard_Mccoy@gmail.com','Richard Mccoy','me','4811 Wolfe Views
-Jasminefurt, AR 56297','001-687-324-7100x','guest');
+Jasminefurt, AR 56297','001-687-324-7100x','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Tony_Adams@gmail.com','Tony Adams','same','3855 Paul Branch Apt. 166
-Danielbury, NJ 14986','082-555-','guest');
+Danielbury, NJ 14986','082-555-','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Christopher_Black@gmail.com','Christopher Black','while','344 Flowers Extensions
 Christopherbury, WI 34831','(664)474-','admin');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Troy_Simpson@gmail.com','Troy Simpson','region','2032 Robert Mill
-Kevinmouth, FM 44365','+1-849-009-','guest');
+Kevinmouth, FM 44365','+1-849-009-','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Amy_Cole@gmail.com','Amy Cole','instead','8843 Davis Place Suite 498
 Vancechester, ME 63903','491.973.','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Jackson_Powell@gmail.com','Jackson Powell','car','6998 Chang Harbor
@@ -182,17 +183,17 @@ East Jason, FM 09725','367-339-','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('James_Jones@gmail.com','James Jones','happy','959 Yvonne Circles Apt. 120
 West Brenda, PA 29849','928863','admin');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Patrick_Andrews@gmail.com','Patrick Andrews','important','USNS Huynh
-FPO AE 96342','360056','guest');
+FPO AE 96342','360056','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Andrea_Henderson@gmail.com','Andrea Henderson','book','583 Bobby Run
 North Jesusmouth, PA 52284','124.804.','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Daniel_Baker@gmail.com','Daniel Baker','top','72701 Stacy Rest
 West Tylerfort, OH 53393','+1-386-606-','admin');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Jennifer_Price@gmail.com','Jennifer Price','my','314 Gardner Stream
-Sarahview, NJ 67100','766.591.8520x3','guest');
+Sarahview, NJ 67100','766.591.8520x3','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Benjamin_Aguilar@gmail.com','Benjamin Aguilar','offer','Unit 6065 Box 8886
 DPO AE 54969','936-387-','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Kristen_Gonzales@gmail.com','Kristen Gonzales','people','38682 Richard Trail Apt. 965
-Shannonland, OR 97761','001-901-774-','guest');
+Shannonland, OR 97761','001-901-774-','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Michael_Sullivan@gmail.com','Michael Sullivan','fly','4246 Campbell Plaza
 Lake Cody, CA 90261','(537)262-4978x','user');
 Insert into SCOTT.FELHASZNALO (EMAIL,NEV,JELSZO,CIM,TELEFON,SZEREP) values ('Marissa_Sanders@gmail.com','Marissa Sanders','light','PSC 1275, Box 0299

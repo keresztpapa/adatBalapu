@@ -116,7 +116,7 @@ router.post("/:table/submitNewRecord", isLoggedIn, isAdmin, async (req, res) => 
 
     // Render the data on an HTML page using a view template
   } catch (err) {
-    console.error(err.message);
+    console.error(err + err.message);
     res.status(500).send("Internal Server Error");
   }
 
@@ -158,9 +158,8 @@ router.get("/:table/deleteRecord/:i", async (req, res) => {
     // Release the connection back to the pool
     await connection.close();
 
-    // Render the data on an HTML page using a view template
   } catch (err) {
-    console.error(err.message);
+    console.error(err + err.message);
     res.status(500).send("Internal Server Error");
     return;
   }

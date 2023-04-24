@@ -13,7 +13,11 @@
 
     <!-- Content area -->
     <div class="content">
+      <% if(user === undefined) {%>
       <h2>Üdv a könyvesboltban!</h2>
+      <% } else { %>
+      <h2><%=user.nev%>, üdv a könyvesboltban!</h2>
+      <% } %>
     </div>
   </body>
 </html>
