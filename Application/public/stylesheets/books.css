@@ -50,7 +50,7 @@
 
 .book-price {
   position: absolute;
-  bottom: 0px;
+  bottom: 10px;
   left: 10px;
   padding: 10px;
   background-color: #b83a01;
@@ -60,10 +60,16 @@
   border-radius: 10px;
 }
 
+.book-price:hover {
+  background-color: #fa570c;
+  scale: 1.1;
+  transition: all 1s;
+}
+
 .book-rating {
   display: flex;
   position: absolute;
-  bottom: 0px;
+  bottom: 5px;
   left: 100px;
   padding: 10px;
   box-shadow: 0px 0px 2px white inset;
