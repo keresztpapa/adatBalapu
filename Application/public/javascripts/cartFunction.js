@@ -1,31 +1,29 @@
-document.querySelectorAll(".add-to-cart").forEach(function(button) {
-  button.addEventListener("click", function() {
-    // Az adott könyv ISBN száma
-    var isbn = button.dataset.isbn;
-
-    // A könyv hozzáadása a kosárhoz
-    addToCart(isbn);
-  });
-});
-
 function addToCart(isbn) {
   console.log(isbn)
-  // AJAX kérés elküldése
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "/add_into_cart", true);
-  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-  xhr.onload = function() {
-    if (xhr.readyState === xhr.DONE) {
-      if (xhr.status === 200) {
-        // A könyv sikeresen hozzá lett adva a kosárhoz
-        console.log(xhr.responseText);
-      } else {
-        // Hiba történt
-        console.error(xhr.responseText);
-      }
+  
+  fetch(`/add_into_cart`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({isbn: isbn})
+  }).then(response => {
+    if (!response.ok) {
+      throw new Error("Failed to add book to cart 1");
     }
-  };
-  xhr.send(JSON.stringify({ isbn: isbn }));
+    return response.json();
+  })
+  .then(data => {
+    if (data.title) {
+      alert(`Book added to cart: ${data.title}`);
+    } else {
+      throw new Error("Failed to add book to cart 2");
+    }
+  })
+  .catch(error => {
+    console.error(error);
+    alert("Failed to add book to cart");
+  });  
 }
 
 /*

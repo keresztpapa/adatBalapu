@@ -28,10 +28,11 @@ router.get("/", async (req, res) => {
 });
 
 //router.post('/kosar/add/:isbn', async (req, res) => {
-router.post('/add_into_cart', async (req, res) => {
-  console.log("BENNE VAN AZ API-ba");
-
-});
+  router.post('/add_into_cart', async (req, res) => {
+    const isbn = req.body.isbn;
+    console.log(`Received ISBN: ${isbn}`);
+    res.json({ title: "Example book" });
+  });
 
 module.exports = router;
 
