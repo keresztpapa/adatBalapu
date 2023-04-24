@@ -28,13 +28,17 @@
       </thead>
       <tbody>
         <% data.forEach(function(row) { %>
-        <tr>
-          <td><%= row.id %></td>
-          <td><%= row.email %></td>
-          <td><%= row.isbn %></td>
-          <td><%= row.darabszam %></td>
-          <td><%= row.hova %></td>
-        </tr>
+          <div class="book">
+            <div class="attributes-container">
+            <tr>
+              <th><p><%= row[0] %></p></th>
+              <th><p><%= row[1] %></p></th>
+              <th><p><%= row[2] %></p></th>
+              <th><p><%= row[3] %></p></th>
+              <th><p><%= row[4] %></p></th>
+            </tr>
+            </div>
+          </div>
         <% }); %>
       </tbody>
     </table>
