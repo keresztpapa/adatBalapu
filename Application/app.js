@@ -35,6 +35,11 @@ app.use(session({
 
 app.use(flash());
 
+app.use(function(req, res, next) {
+  res.locals.user = req.session.user;
+  next();
+});
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const booksRouter = require('./routes/konyvek');

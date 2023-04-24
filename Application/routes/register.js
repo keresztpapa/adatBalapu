@@ -36,10 +36,11 @@ router.post('/', async (req, res) => {
         console.log(email_exists.rows[0][0]);
         if (email_exists.rows[0][0] !== 0){
             res.locals.errors.push("Már létezik felhasználó ilyen e-mail címmel.");
+        }
+        if (res.locals.errors.length !== 0){
             res.render('register');
             return;
         }
-        console.log(email_exists);
 
         // Execute the SQL query to fetch the data
         await connection.client.execute(
