@@ -20,37 +20,6 @@ router.get('/admin', isLoggedIn, isAdmin, (req, res) => {
   res.render('admin');
 });
 
-/*
-router.get('/', isAuthenticated(), function(req, res, next) {
-  res.render('admin');
-});
-*/
-
-function isLoggedIn(req, res, next) {
-  if (req.session.user) {
-    return next();
-  }
-  res.redirect('/login');
-}
-
-function isAdmin(req, res, next) {
-  if (req.session.user && req.session.user.isAdmin) {
-    return next();
-  }
-  res.redirect('/');
-}
-
-router.get('/admin', isLoggedIn, isAdmin, (req, res) => {
-  res.render('admin');
-});
-
-/*
-// GET listings. 
-router.get("/", function (req, res, next) {
-  res.render("admin");
-});
-*/
-*/
 
 router.get("/:table", isLoggedIn, isAdmin, async (req, res) => {
   console.log(req.params);
