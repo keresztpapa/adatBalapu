@@ -1288,3 +1288,183 @@ Goodwinview, CT 21898','Lewis-Green');
 
 COMMIT;
 
+-- admin felhasználót nem törölhetünk
+CREATE OR REPLACE TRIGGER trg_forbid_admin_delete
+BEFORE DELETE ON felhasznalo
+FOR EACH ROW
+BEGIN
+  IF :OLD.szerep = 'admin' THEN
+    RAISE_APPLICATION_ERROR(-20001, 'Deleting admin users is not allowed!');
+  END IF;
+END;
+/
+
+-- kitöröljük a törlendő felhasználó tételeit is
+CREATE OR REPLACE TRIGGER trg_delete_tetel_on_felhasznalo_delete
+BEFORE DELETE ON felhasznalo
+FOR EACH ROW
+BEGIN
+  DELETE FROM tetel
+  WHERE email = :OLD.email;
+END;
+/
+
+-- kiadta tábla frissítése on könyv insert/delete
+CREATE OR REPLACE TRIGGER update_kiadta
+AFTER INSERT OR DELETE ON konyv
+FOR EACH ROW
+DECLARE
+BEGIN
+  IF INSERTING THEN
+    INSERT INTO kiadta (nev, isbn, mikor)
+    VALUES (:NEW.cim, :NEW.isbn, EXTRACT(YEAR FROM SYSDATE));
+  ELSE
+    DELETE FROM kiadta
+    WHERE isbn = :OLD.isbn;
+  END IF;
+END;
+/
+
+-- mufaj tábla frissítése on könyv insert ('ismeretlen')/delete
+CREATE OR REPLACE TRIGGER tie_mufaj_trigger
+AFTER INSERT OR DELETE ON konyv
+FOR EACH ROW
+DECLARE
+  mufaj mufaja.mufajnev%TYPE;
+BEGIN
+  IF INSERTING THEN
+    INSERT INTO mufaja (mufajnev, isbn) VALUES ('ismeretlen', :NEW.isbn);
+  END IF;
+  
+  IF DELETING THEN
+    DELETE FROM mufaja WHERE isbn = :OLD.isbn;
+  END IF;
+END;
+/
+
+-- ismeretlen mufaj torlese ha adunk hozza mas mufajt
+CREATE OR REPLACE TRIGGER remove_ismeretlen_mufaja
+BEFORE INSERT ON mufaja
+FOR EACH ROW
+BEGIN
+  DELETE FROM mufaja
+  WHERE mufajnev = 'ismeretlen' AND isbn = :NEW.isbn;
+END;
+
+COMMIT;
+
+-- könyv átlagos értékelése
+CREATE OR REPLACE FUNCTION get_average_rating(
+    p_isbn IN VARCHAR2
+) RETURN NUMBER
+IS
+    v_total_ratings NUMBER := 0;
+    v_num_ratings NUMBER := 0;
+BEGIN
+    SELECT SUM(pontszam), COUNT(*) 
+    INTO v_total_ratings, v_num_ratings 
+    FROM ertekeles 
+    WHERE isbn = p_isbn;
+
+    IF v_num_ratings = 0 THEN
+        RETURN 0;
+    ELSE
+        RETURN v_total_ratings / v_num_ratings;
+    END IF;
+END;
+/
+
+-- legmagasabbra ertekelt konyv
+CREATE OR REPLACE FUNCTION highest_rated_book RETURN VARCHAR2 AS
+  v_isbn VARCHAR2(13);
+BEGIN
+  SELECT isbn
+  INTO v_isbn
+  FROM (
+    SELECT isbn, AVG(pontszam) AS avg_pontszam
+    FROM ertekeles
+    GROUP BY isbn
+    ORDER BY avg_pontszam DESC
+  )
+  WHERE ROWNUM = 1;
+  RETURN v_isbn;
+END;
+/
+
+-- kedvenc hozzaadasa
+CREATE OR REPLACE PROCEDURE SCOTT.add_favorite(p_email IN VARCHAR2, p_isbn IN VARCHAR2)
+IS
+BEGIN
+  INSERT INTO SCOTT.kedvence (email, isbn)
+  VALUES (p_email, p_isbn);
+  
+  COMMIT;
+  
+  DBMS_OUTPUT.PUT_LINE('Book with ISBN ' || p_isbn || ' has been added to favorites for user with email ' || p_email);
+EXCEPTION
+  WHEN OTHERS THEN
+    DBMS_OUTPUT.PUT_LINE('An error has occurred: ' || SQLERRM);
+END;
+/
+
+-- kedvenc torlese
+CREATE OR REPLACE PROCEDURE SCOTT.remove_favorite(p_email IN VARCHAR2, p_isbn IN VARCHAR2)
+IS
+BEGIN
+  DELETE FROM SCOTT.kedvence
+  WHERE email = p_email
+  AND isbn = p_isbn;
+  
+  COMMIT;
+  
+  DBMS_OUTPUT.PUT_LINE('Book with ISBN ' || p_isbn || ' has been removed from favorites for user with email ' || p_email);
+EXCEPTION
+  WHEN OTHERS THEN
+    DBMS_OUTPUT.PUT_LINE('An error has occurred: ' || SQLERRM);
+END;
+/
+
+-- szerző könyveinek száma
+CREATE OR REPLACE FUNCTION count_books_by_author(author_name IN VARCHAR2) RETURN NUMBER IS
+  book_count NUMBER;
+BEGIN
+  SELECT COUNT(*) INTO book_count
+  FROM szerzoje s
+  WHERE s.szerzonev = author_name;
+  RETURN book_count;
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+    RETURN 0;
+END;
+/
+
+-- function example usage:
+
+-- async function getBookCountByAuthor(authorName) {
+--   let conn;
+--   try {
+--     conn = await oracledb.getConnection({
+--       user: "your_username",
+--       password: "your_password",
+--       connectString: "your_connection_string"
+--     });
+
+--     const result = await conn.execute(
+--       `BEGIN
+--         :count := get_book_count_by_author(:authorName);
+--       END;`,
+--       {
+--         authorName: authorName,
+--         count: { dir: oracledb.BIND_OUT, type: oracledb.NUMBER }
+--       }
+--     );
+
+--     return result.outBinds.count;
+--   } catch (err) {
+--     console.error(err);
+--   } finally {
+--     if (conn) {
+--       await conn.close();
+--     }
+--   }
+-- }
