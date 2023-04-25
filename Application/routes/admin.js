@@ -18,7 +18,7 @@ function isAdmin(req, res, next) {
 
 router.get('/admin', isLoggedIn, isAdmin, (req, res) => {
   res.render('admin');
-
+});
 
 router.get("/:table", isLoggedIn, isAdmin, async (req, res) => {
   console.log(req.params);
