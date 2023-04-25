@@ -8,7 +8,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="stylesheets/style.css">
-  <style>
+  <link rel="stylesheet" href="stylesheets/kosar.css">
+  <!-- <style>
     table {
       margin: 20px auto;
       width: auto;
@@ -44,7 +45,7 @@
     th {
       background-color: #eee;
     }
-  </style>
+  </style> -->
   <title>Könyvesbolt</title>
 </head>
 <body>
@@ -55,8 +56,28 @@
     <!-- Content area -->
     <div class="content">
       <h2> Kosár </h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Cím</th>
+            <th>Darabszam</th>
+            <th>Hova</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.forEach(function(row) { %>
+            <tr>
+              <td><%= row[0] %></td>
+              <td><%= row[1] %></td>
+              <td><%= row[2] %></td>
+              <td><%= row[3] %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
     </div>
-    <table>
+    <!-- <table>
       <thead>
         <tr>
           <th>Email</th>
@@ -75,6 +96,6 @@
           </tr>
         <% }); %>
       </tbody>
-    </table>
+    </table> -->
   </body>
 </html>
