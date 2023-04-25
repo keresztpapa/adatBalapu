@@ -18,14 +18,7 @@ function isAdmin(req, res, next) {
 
 router.get('/admin', isLoggedIn, isAdmin, (req, res) => {
   res.render('admin');
-});
 
-/*
-// GET listings. 
-router.get("/", function (req, res, next) {
-  res.render("admin");
-});
-*/
 
 router.get("/:table", isLoggedIn, isAdmin, async (req, res) => {
   console.log(req.params);
@@ -158,8 +151,9 @@ router.get("/:table/deleteRecord/:i", async (req, res) => {
     // Release the connection back to the pool
     await connection.close();
 
+    // Render the data on an HTML page using a view template
   } catch (err) {
-    console.error(err + err.message);
+    console.error(err.message);
     res.status(500).send("Internal Server Error");
     return;
   }

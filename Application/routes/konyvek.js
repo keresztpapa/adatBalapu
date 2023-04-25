@@ -4,7 +4,7 @@ const { getConnection } = require("../database");
 
 router.get("/", async (req, res) => {
   try {
-    console.log("ASD");
+
     // Get a connection to the Oracle database
     const connection = await getConnection();
 
@@ -27,46 +27,40 @@ router.get("/", async (req, res) => {
   }
 });
 
-//router.post('/kosar/add/:isbn', async (req, res) => {
 router.post('/add_into_cart', async (req, res) => {
-  console.log("BENNE VAN AZ API-ba");
-
-});
-
-module.exports = router;
-
-/*
-  const isbn = req.params.isbn;
+  const isbn = req.body.isbn;
   const quantity = 1;
-  const email = null;
-  const hova = null;
+  const email = "Michael_Thompson@gmail.com";
+  const hova = "6023 Bailey Mountain Nicholasstad, NV 96739";
 
+  console.log(`Received ISBN: ${isbn}`);
   try {
     // Get a connection to the Oracle database
     const connection = await getConnection();
 
-    // Insert the item into the cart
-    const result = await connection.client.execute(
-      `INSERT INTO tetel (id, email, isbn, darabszam, hova) VALUES (cart_seq.NEXTVAL, :email, :isbn, :quantity, :hova)`,
-      {
-        email: email,
-        isbn: isbn,
-        quantity: quantity,
-        hova: hova
-      },
-      { autoCommit: true }
-    );
+  const result = await connection.client.execute(
+    `SELECT MAX(id) FROM tetel`
+  );
+  const nextId = result.rows[0]+1;
 
+  // Insert the new item into the cart using the next available id
+  const insertResult = await connection.client.execute(
+    `INSERT INTO tetel (id, email, isbn, darabszam, hova)
+     VALUES (:id, :email, :isbn, :quantity, :hova)`,
+    [nextId, email, isbn, quantity, hova]
+  );
+      
     console.log("Rows inserted: " + result.rowsAffected);
 
     // Release the connection back to the pool
     await connection.close();
 
     // Send a success response back to the client
-    res.status(200).send("Item added to cart.");
+    res.status(200).json({message: "Item added to cart."});
   } catch (err) {
     console.error(err);
-    res.status(500).send("Internal Server Error");
+    res.status(500).json({message: "Internal server error"});
   }
+});
 
-*/
+module.exports = router;

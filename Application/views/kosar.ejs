@@ -5,6 +5,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="stylesheets/style.css">
+  <style>
+    table {
+      margin: 20px auto;
+      width: auto;
+      border-collapse: collapse;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+    
+    th {
+      background-color: #eee;
+    }
+  </style>
   <title>Könyvesbolt</title>
 </head>
 <body>
@@ -19,22 +38,20 @@
     <table>
       <thead>
         <tr>
-          <th>ID</th>
           <th>Email</th>
-          <th>ISBN</th>
+          <th>Cím</th>
           <th>Darabszam</th>
           <th>Hova</th>
         </tr>
       </thead>
       <tbody>
         <% data.forEach(function(row) { %>
-        <tr>
-          <td><%= row.id %></td>
-          <td><%= row.email %></td>
-          <td><%= row.isbn %></td>
-          <td><%= row.darabszam %></td>
-          <td><%= row.hova %></td>
-        </tr>
+          <tr>
+            <td><%= row[0] %></td>
+            <td><%= row[1] %></td>
+            <td><%= row[2] %></td>
+            <td><%= row[3] %></td>
+          </tr>
         <% }); %>
       </tbody>
     </table>
