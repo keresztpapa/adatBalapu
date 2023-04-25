@@ -29,6 +29,7 @@ router.get("/", async (req, res) => {
 
 router.post('/add_into_cart', async (req, res) => {
   const isbn = req.body.isbn;
+  const isbn = req.body.isbn;
   const quantity = 1;
   const email = "Michael_Thompson@gmail.com";
   const hova = "6023 Bailey Mountain Nicholasstad, NV 96739";
