@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/slider.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="javascripts/slider.js"></script>
     <title>Könyvesbolt</title>
   </head>
   <body>
@@ -14,10 +17,48 @@
     <!-- Content area -->
     <div class="content">
       <% if(user === undefined) {%>
-      <h2>Üdv a könyvesboltban!</h2>
+      <h1 id="welcome">Üdv a könyvesboltban!</h1>
       <% } else { %>
       <h2><%=user.nev%>, üdv a könyvesboltban!</h2>
       <% } %>
-    </div>
+      <div id="slider">
+        <div class="slide">
+          <img src="images/book1.png" alt="Book 1">
+          <h2>Magnetic Ancient Frog Of Prosperity</h2>
+          <pre>
+            Szerző: Amanda Taylor
+
+            Műfajok: Development
+            
+            Kiadó: Bishop-Johnson 
+          </p>
+        </div>
+        <div class="slide">
+          <img src="images/book2.png" alt="Book 2">
+          <h2>Athletic Rainbow Labradoodle Of Pleasure</h2>
+          <pre>
+            Szerző: Chad Cochran
+
+            Műfajok: Development
+            
+            Kiadó: Pittman, Schwartz and Bennett
+            </pre>
+        </div>
+        <div class="slide">
+          <img src="images/book3.png" alt="Book 3">
+          <h2>Green Toad Of Scientific Attraction</h2>
+          <pre>
+            Szerző: Derek Lee
+
+            Műfajok: Travel
+            
+            Kiadó: Lopez PLC</pre>
+        </div>
+      </div>
+      <div class="slider-buttons">
+        <button id="prev" class="slider-button">&lt;</button>
+        <button id="next" class="slider-button">&gt;</button> 
+      </div> 
+    </div>  
   </body>
 </html>
