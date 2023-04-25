@@ -4,8 +4,7 @@ const { getConnection } = require("../database");
 
 router.get("/", async (req, res) => {
   try {
-    console.log("ASD");
-    console.log("ASD");
+
     // Get a connection to the Oracle database
     const connection = await getConnection();
 
@@ -20,7 +19,6 @@ router.get("/", async (req, res) => {
     // Release the connection back to the pool
     await connection.close();
 
-
     // Render the data on an HTML page using a view template
     res.render("konyvek", { rows: konyv_adatok.rows });
   } catch (err) {
@@ -28,7 +26,6 @@ router.get("/", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
-
 
 router.post('/add_into_cart', async (req, res) => {
   const isbn = req.body.isbn;

@@ -18,7 +18,6 @@ function isAdmin(req, res, next) {
 
 router.get('/admin', isLoggedIn, isAdmin, (req, res) => {
   res.render('admin');
-});
 
 
 router.get("/:table", isLoggedIn, isAdmin, async (req, res) => {
@@ -59,12 +58,7 @@ router.get("/:table", isLoggedIn, isAdmin, async (req, res) => {
     req.session.columnNames = columnNames.rows;
     req.session.rows = data.rows;
 
-    req.session.table = table_name;
-    req.session.columnNames = columnNames.rows;
-    req.session.rows = data.rows;
-
     // Render the data on an HTML page using a view template
-    res.render("admin", { tableName: table_name, rows: data.rows, columnNames: columnNames.rows, formFields: formFields });
     res.render("admin", { tableName: table_name, rows: data.rows, columnNames: columnNames.rows, formFields: formFields });
   } catch (err) {
     console.error(err);
@@ -115,7 +109,7 @@ router.post("/:table/submitNewRecord", isLoggedIn, isAdmin, async (req, res) => 
 
     // Render the data on an HTML page using a view template
   } catch (err) {
-    console.error(err.message);
+    console.error(err + err.message);
     res.status(500).send("Internal Server Error");
   }
 
