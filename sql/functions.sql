@@ -113,3 +113,6 @@ END;
 --     }
 --   }
 -- }
+
+-- const bookCount = await getBookCountByAuthor('J.K. Rowling');
+-- console.log(`J.K. Rowling has written ${bookCount} books.`);
