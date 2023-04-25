@@ -309,7 +309,7 @@ Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-7449-796
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-4382-8868-9','Alyssa_Gonzalez@gmail.com','1','journal');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-138-01647-0','Amber_Valenzuela@gmail.com','5','silver');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-369-80394-9','Ashlee_Hardy@gmail.com','0','reluctance');
-Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-14-339473-8','Austin_Bell@gmail.com','6','gelatin');
+Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-14-339473-8','Austin_Bell@gmail.com','5','gelatin');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-674-92399-5','Benjamin_Aguilar@gmail.com','5','span');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-960962-52-3','Brian_Cardenas@gmail.com','2','zero');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-293-55234-7','Bridget_Martin@gmail.com','1','statement');
@@ -320,7 +320,7 @@ Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-185-7569
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-682-60823-8','Deborah_Townsend@gmail.com','4','certification');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-339-99775-3','Diana_Swanson@gmail.com','1','notepad');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-03-784706-6','Gary_Stewart@gmail.com','3','ephemeris');
-Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-422-65084-6','Grace_Parker@gmail.com','6','sloth');
+Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-422-65084-6','Grace_Parker@gmail.com','5','sloth');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-11-245363-5','James_Brown@gmail.com','4','song');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-998414-74-4','James_Jones@gmail.com','5','mankind');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-88765-109-7','Jennifer_Patterson@gmail.com','2','reversal');
@@ -333,27 +333,27 @@ Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-74356-84
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-185-75693-0','Katelyn_Martin@gmail.com','1','ophthalmologist');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-935398-09-1','Kayla_Smith@gmail.com','2','translation');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-63443-207-X','Kent_Conner@gmail.com','4','existence');
-Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-4382-8868-9','Kevin_Anderson@gmail.com','6','trip');
+Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-4382-8868-9','Kevin_Anderson@gmail.com','5','trip');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-77428-130-9','Lauren_Nielsen@gmail.com','4','hero');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-293-55234-7','Leslie_Oconnell@gmail.com','0','twist');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-369-80394-9','Madison_Lowe@gmail.com','5','savage');
-Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-89340-018-1','Maria_Parker@gmail.com','6','conduct');
+Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-89340-018-1','Maria_Parker@gmail.com','5','conduct');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-119-52131-9','Maria_Scott@gmail.com','0','fireplace');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-308-86366-7','Marissa_Sanders@gmail.com','1','headquarters');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-87918-361-6','Martha_Shaw@gmail.com','2','carnation');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-4703-1305-7','Matthew_Richmond@gmail.com','5','kite');
-Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-926692-82-8','Matthew_White@gmail.com','6','disembodiment');
+Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-926692-82-8','Matthew_White@gmail.com','5','disembodiment');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-605-73005-9','Meagan_Vega@gmail.com','2','spiral');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-9985006-0-7','Melissa_Smith@gmail.com','3','soap');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-369-80394-9','Michael_Mckenzie@gmail.com','0','phrasing');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-381-89366-9','Michael_Thompson@gmail.com','1','savior');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-293-55234-7','Miranda_Hernandez@gmail.com','0','insectarium');
-Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-339-99775-3','Natalie_Taylor@gmail.com','6','cytokine');
+Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-339-99775-3','Natalie_Taylor@gmail.com','5','cytokine');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-4568-3005-8','Nicholas_Zamora@gmail.com','1','heifer');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-12-836233-2','Nicole_Moon@gmail.com','2','gopher');
-Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-907139-00-0','Patrick_Andrews@gmail.com','6','whirlpool');
+Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-907139-00-0','Patrick_Andrews@gmail.com','5','whirlpool');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-8421-4639-3','Rebecca_Bishop@gmail.com','2','relief');
-Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-631-06761-2','Rebecca_Espinoza@gmail.com','6','crane');
+Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-631-06761-2','Rebecca_Espinoza@gmail.com','5','crane');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-08-057361-5','Rebecca_Houston@gmail.com','2','longing');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-04-255280-0','Richard_Mccoy@gmail.com','5','drawbridge');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-204-80137-1','Robert_Allen@gmail.com','1','wire');
@@ -366,10 +366,10 @@ Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-170-5007
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-01-942875-8','Steven_Salazar@gmail.com','0','abundance');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-907139-00-0','Theresa_Alvarez@gmail.com','3','gray');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('0-422-65084-6','Tiffany_Hunter@gmail.com','5','abortion');
-Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-119-52131-9','Todd_Bean@gmail.com','6','barium');
+Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-119-52131-9','Todd_Bean@gmail.com','5','barium');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-63443-207-X','Tony_Adams@gmail.com','3','nose');
 Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-78482-193-4','Troy_Simpson@gmail.com','1','kazoo');
-Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-230-33861-6','Vanessa_Ortiz@gmail.com','6','fencing');
+Insert into SCOTT.ERTEKELES (ISBN,EMAIL,PONTSZAM,MEGJEGYZES) values ('1-230-33861-6','Vanessa_Ortiz@gmail.com','5','fencing');
 
 Insert into SCOTT.KEDVENCE (ISBN,EMAIL) values ('0-7449-7965-X','Aaron_Jackson@gmail.com');
 Insert into SCOTT.KEDVENCE (ISBN,EMAIL) values ('1-66925-440-2','Alyssa_Gonzalez@gmail.com');
@@ -975,7 +975,7 @@ Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('4','Christ
 Leeville, CO 73987','3');
 Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('5','Melissa_Smith@gmail.com','0-674-92399-5',TO_DATE('2021-2-16 12:16:52', 'yyyy-MM-dd HH24:mi:ss'),'3628 Douglas Falls
 Bellview, NE 51786','1');
-Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('6','Shannon_Ochoa@gmail.com','1-01-185586-0',TO_DATE('2022-10-24 17:41:23', 'yyyy-MM-dd HH24:mi:ss'),'28988 Phillips Walks
+Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('5','Shannon_Ochoa@gmail.com','1-01-185586-0',TO_DATE('2022-10-24 17:41:23', 'yyyy-MM-dd HH24:mi:ss'),'28988 Phillips Walks
 South Ashley, MS 59439','3');
 Insert into SCOTT.TETEL (ID,EMAIL,ISBN,MIKOR,HOVA,DARABSZAM) values ('7','Nicole_Moon@gmail.com','0-89255-515-7',TO_DATE('2021-12-9 20:29:27', 'yyyy-MM-dd HH24:mi:ss'),'5683 Tara Valley Suite 371
 East Andrea, ME 94605','1');

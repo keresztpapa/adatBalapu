@@ -37,10 +37,10 @@ END;
 /
 
 -- kedvenc hozzaadasa
-CREATE OR REPLACE PROCEDURE SCOTT.add_favorite(p_email IN VARCHAR2, p_isbn IN VARCHAR2)
+CREATE OR REPLACE PROCEDURE add_favorite(p_email IN VARCHAR2, p_isbn IN VARCHAR2)
 IS
 BEGIN
-  INSERT INTO SCOTT.kedvence (email, isbn)
+  INSERT INTO kedvence (email, isbn)
   VALUES (p_email, p_isbn);
   
   COMMIT;
@@ -53,10 +53,10 @@ END;
 /
 
 -- kedvenc torlese
-CREATE OR REPLACE PROCEDURE SCOTT.remove_favorite(p_email IN VARCHAR2, p_isbn IN VARCHAR2)
+CREATE OR REPLACE PROCEDURE remove_favorite(p_email IN VARCHAR2, p_isbn IN VARCHAR2)
 IS
 BEGIN
-  DELETE FROM SCOTT.kedvence
+  DELETE FROM kedvence
   WHERE email = p_email
   AND isbn = p_isbn;
   
