@@ -30,8 +30,7 @@ router.get("/", async (req, res) => {
 router.post('/add_into_cart', async (req, res) => {
   const isbn = req.body.isbn;
   const quantity = 1;
-  const email = "Michael_Thompson@gmail.com";
-  const hova = "6023 Bailey Mountain Nicholasstad, NV 96739";
+  const email = req.session.email;
 
   console.log(`Received ISBN: ${isbn}`);
   try {
@@ -43,11 +42,18 @@ router.post('/add_into_cart', async (req, res) => {
   );
   const nextId = result.rows[0]+1;
 
+  const result1 = await connection.client.execute(
+    `SELECT cim FROM felhasznalo WHERE email = :email`, [email]
+  );
+
+  const user_addr = result1.rows;
+  console.log(email);
+  console.log(user_addr);
   // Insert the new item into the cart using the next available id
   const insertResult = await connection.client.execute(
     `INSERT INTO tetel (id, email, isbn, darabszam, hova)
      VALUES (:id, :email, :isbn, :quantity, :hova)`,
-    [nextId, email, isbn, quantity, hova]
+    [nextId, email, isbn, quantity, user_addr]
   );
       
     console.log("Rows inserted: " + result.rowsAffected);
