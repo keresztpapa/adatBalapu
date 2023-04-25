@@ -19,7 +19,11 @@
 
   <div class="user-management">
     <a href="/kosar"> Kosaram </a>
-    <a href="/register"> Regisztráció </a>
-    <a href="/login"> Bejelentkezés </a>
+    <% if (user) { %>
+      <a href="/logout"> Kijelentkezés </a>
+    <% } else { %>
+      <a href="/register"> Regisztráció </a>
+      <a href="/login"> Bejelentkezés </a> 
+    <% } %>
   </div>
 </div>

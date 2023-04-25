@@ -46,6 +46,7 @@ const booksRouter = require('./routes/konyvek');
 const adminRouter = require('./routes/admin');
 const cartRouter = require('./routes/kosar');
 const loginRouter = require('./routes/login');
+const logoutRouter = require('./routes/logout');
 const registerRouter = require('./routes/register');
 
 app.use('/', indexRouter);
@@ -55,6 +56,7 @@ app.use('/konyvek', booksRouter);
 app.use('/admin', adminRouter);
 app.use('/kosar', cartRouter);
 app.use('/login', loginRouter);
+app.use('/logout', logoutRouter);
 app.use('/register', registerRouter);
 
 // catch 404 and forward to error handler
