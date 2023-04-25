@@ -40,15 +40,15 @@ router.post('/add_into_cart', async (req, res) => {
       const connection = await getConnection();
   
     const result = await connection.client.execute(
-      `SELECT tetel.id FROM tetel`
+      `SELECT MAX(id) FROM tetel`
     );
-    const nextId = result.rows[0];
+    const nextId = result.rows[0]+1;
 
     // Insert the new item into the cart using the next available id
     const insertResult = await connection.client.execute(
       `INSERT INTO tetel (id, email, isbn, darabszam, hova)
        VALUES (:id, :email, :isbn, :quantity, :hova)`,
-      [nextId+1, email, isbn, quantity, hova]
+      [nextId, email, isbn, quantity, hova]
     );
         
       console.log("Rows inserted: " + result.rowsAffected);

@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
   try {
     const conn = await getConnection();
 
-    const result = await conn.client.execute(`SELECT id, email, isbn, darabszam, hova FROM tetel`);
+    const result = await conn.client.execute(`SELECT email, cim, darabszam, hova FROM tetel, konyv WHERE tetel.isbn = konyv.isbn`);
     res.render('kosar', { data: result.rows });
   } catch (err) {
     console.error(err);
