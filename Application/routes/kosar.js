@@ -9,9 +9,10 @@ router.get('/', async (req, res) => {
   try {
     const conn = await getConnection();
 
-    const result = await conn.client.execute(`SELECT email, cim, darabszam, hova FROM tetel, konyv WHERE tetel.isbn = konyv.isbn`);
-
-
+    const email = req.session.userId;
+    
+    const result = await conn.client.execute(`SELECT email, cim, darabszam, hova FROM tetel, konyv WHERE tetel.isbn = konyv.isbn AND tetel.email = :email`, [email]);
+    
     res.render('kosar', { data: result.rows });
   } catch (err) {
     console.error(err);
