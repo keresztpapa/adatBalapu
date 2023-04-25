@@ -6,18 +6,18 @@ function isLoggedIn(req, res, next) {
   if (req.session.user) {
     return next();
   }
-  res.redirect('/login');
+  res.redirect("/login");
 }
 
 function isAdmin(req, res, next) {
   if (req.session.user && req.session.user.isAdmin) {
     return next();
   }
-  res.redirect('/');
+  res.redirect("/");
 }
 
-router.get('/admin', isLoggedIn, isAdmin, (req, res) => {
-  res.render('admin');
+router.get("/admin", isLoggedIn, isAdmin, (req, res) => {
+  res.render("admin");
 });
 
 router.get("/:table", isLoggedIn, isAdmin, async (req, res) => {
@@ -27,30 +27,27 @@ router.get("/:table", isLoggedIn, isAdmin, async (req, res) => {
 
   table_name = table_name.toUpperCase();
 
+  let connection;
   try {
     // Get a connection to the Oracle database
-    const connection = await getConnection();
+    connection = await getConnection();
 
     const columnNames = await connection.client.execute(`
         SELECT column_name
         FROM USER_TAB_COLS
-        WHERE TABLE_NAME = '${table_name}'`
-    );
+        WHERE TABLE_NAME = '${table_name}'`);
 
     // Map column_names to formfields
-    const formFields = columnNames.rows.map(columnName => ({
+    const formFields = columnNames.rows.map((columnName) => ({
       name: columnName,
       label: columnName,
-      type: 'text',
+      type: "text",
       required: true,
       minLength: 3,
       maxLength: 255,
     }));
 
-
-    const data = await connection.client.execute(
-      `SELECT * FROM ${table_name}`
-    );
+    const data = await connection.client.execute(`SELECT * FROM ${table_name}`);
 
     await connection.close();
 
@@ -59,64 +56,82 @@ router.get("/:table", isLoggedIn, isAdmin, async (req, res) => {
     req.session.rows = data.rows;
 
     // Render the data on an HTML page using a view template
-    res.render("admin", { tableName: table_name, rows: data.rows, columnNames: columnNames.rows, formFields: formFields });
+    res.render("admin", {
+      tableName: table_name,
+      rows: data.rows,
+      columnNames: columnNames.rows,
+      formFields: formFields,
+    });
   } catch (err) {
     console.error(err);
     res.status(500).send("Internal Server Error");
+  } finally {
+    if (connection) {
+      connection.close();
+    }
   }
 });
 
 // New record submit form handler
-router.post("/:table/submitNewRecord", isLoggedIn, isAdmin, async (req, res) => {
-  // Logging some stuff
-  console.log(req.body);
-  var table_name = req.params["table"];
-  console.log("Insert new | Table name: " + table_name);
+router.post(
+  "/:table/submitNewRecord",
+  isLoggedIn,
+  isAdmin,
+  async (req, res) => {
+    // Logging some stuff
+    console.log(req.body);
+    var table_name = req.params["table"];
+    console.log("Insert new | Table name: " + table_name);
 
-  // TODO Indicate that the insertion wasn't successful
-  // TODO Triggers? blushingemoji
+    // TODO Indicate that the insertion wasn't successful
+    // TODO Triggers? blushingemoji
 
-  try {
-    // Get a connection to the Oracle database
-    const connection = await getConnection();
+    let connection;
+    try {
+      // Get a connection to the Oracle database
+      connection = await getConnection();
 
-    // Create comma separated string, each element is between a ''
-    const values = Object.values(req.body);
-    const dataToInsert = values.map(value => {
-      const numberValue = Number(value);
-      if (!isNaN(numberValue)) {
-        return numberValue;
-      } else if (typeof value === 'string') {
-        return `'${value}'`;
-      } else {
-        return value;
+      // Create comma separated string, each element is between a ''
+      const values = Object.values(req.body);
+      const dataToInsert = values
+        .map((value) => {
+          const numberValue = Number(value);
+          if (!isNaN(numberValue)) {
+            return numberValue;
+          } else if (typeof value === "string") {
+            return `'${value}'`;
+          } else {
+            return value;
+          }
+        })
+        .join(", ");
+
+      console.log(dataToInsert);
+      console.log("SQL Query: \n");
+      console.log(`INSERT INTO ${table_name} VALUES (${dataToInsert})`);
+      // Dynamically add new data to table
+      await connection.client.execute(
+        `INSERT INTO ${table_name} VALUES (${dataToInsert})`
+      );
+      await connection.client.execute(`COMMIT`);
+
+      // Release the connection back to the pool
+      await connection.close();
+
+      // Render the data on an HTML page using a view template
+    } catch (err) {
+      console.error(err + err.message);
+      res.status(500).send("Internal Server Error");
+    } finally {
+      if (connection) {
+        connection.close();
       }
-    }).join(', ');
+    }
 
-    console.log(dataToInsert);
-    console.log("SQL Query: \n");
-    console.log(`INSERT INTO ${table_name} VALUES (${dataToInsert})`);
-    // Dynamically add new data to table
-    await connection.client.execute(
-      `INSERT INTO ${table_name} VALUES (${dataToInsert})`
-    );
-    await connection.client.execute(`COMMIT`);
-
-
-
-    // Release the connection back to the pool
-    await connection.close();
-
-    // Render the data on an HTML page using a view template
-  } catch (err) {
-    console.error(err + err.message);
-    res.status(500).send("Internal Server Error");
+    res.redirect(`/admin/${table_name}`);
+    return;
   }
-
-  res.redirect(`/admin/${table_name}`);
-  return;
-});
-
+);
 
 // delete record button handler
 router.get("/:table/deleteRecord/:i", isLoggedIn, isAdmin, async (req, res) => {
@@ -125,15 +140,16 @@ router.get("/:table/deleteRecord/:i", isLoggedIn, isAdmin, async (req, res) => {
   let table_name = req.params["table"];
   let row_at = req.params["i"];
 
+  let connection;
   try {
     // Get a connection to the Oracle database
-    const connection = await getConnection();
+    connection = await getConnection();
 
-    let conditions = '';
+    let conditions = "";
     let columnNames = req.session.columnNames;
     let rows = req.session.rows;
-    for (let i = 0; i < columnNames.length; ++i){
-      if (i !== 0) conditions += ' AND ';
+    for (let i = 0; i < columnNames.length; ++i) {
+      if (i !== 0) conditions += " AND ";
       if (isInteger(rows[row_at][i]))
         conditions += `${columnNames[i]} = ${rows[row_at][i]}`;
       else if (rows[row_at][i] === null)
@@ -156,6 +172,10 @@ router.get("/:table/deleteRecord/:i", isLoggedIn, isAdmin, async (req, res) => {
     console.error(err.message);
     res.status(500).send("Internal Server Error");
     return;
+  } finally {
+    if (connection) {
+      connection.close();
+    }
   }
 
   res.redirect(`/admin/${table_name}`);
