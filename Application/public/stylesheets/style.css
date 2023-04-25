@@ -12,7 +12,7 @@ h1 {
   position: fixed;
   top: 0;
   left: 0;
-  /*width: 200px;*/
+  /*width: 200px; */
   width: auto;
   height: 100%;
   background-color: black;
@@ -46,7 +46,7 @@ ul * {
   color: white;
   padding: 10px;
   z-index: 9999;
-  margin-left: 240px;
+  margin-left: 210px;
   padding: 20px;
   z-index: 1;
   text-shadow: 0.2px 0.2px 3px rgba(255, 255, 255, 0.6);

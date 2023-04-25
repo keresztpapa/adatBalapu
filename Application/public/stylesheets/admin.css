@@ -114,3 +114,14 @@ select option {
 a:has(button) {
   text-decoration: none;
 }
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.action-button {
+  width: 50px;
+  height: 30px;
+}

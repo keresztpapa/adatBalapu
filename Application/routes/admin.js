@@ -119,7 +119,7 @@ router.post("/:table/submitNewRecord", isLoggedIn, isAdmin, async (req, res) => 
 
 
 // delete record button handler
-router.get("/:table/deleteRecord/:i", async (req, res) => {
+router.get("/:table/deleteRecord/:i", isLoggedIn, isAdmin, async (req, res) => {
   // Logging some stuff
   console.log(req.body);
   let table_name = req.params["table"];

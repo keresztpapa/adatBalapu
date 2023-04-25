@@ -90,9 +90,9 @@
             <% for (let j = 0; j < rows[i].length; j++) { %>
             <td><%= rows[i][j] %></td>
             <% } %>
-            <td>
-              <a href="<%=tableName%>/editRecord/<%=i%>"> <button>Edit</button> </a>
-              <a href="<%=tableName%>/deleteRecord/<%=i%>"> <button>Delete</button> </a>
+            <td class="actions">
+              <a href="<%=tableName%>/editRecord/<%=i%>"> <button class="action-button">Edit</button> </a>
+              <a href="<%=tableName%>/deleteRecord/<%=i%>"> <button class="action-button">Delete</button> </a>
             </td>
           </tr>
           <% } %>
