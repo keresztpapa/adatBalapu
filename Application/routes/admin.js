@@ -20,7 +20,7 @@ router.get('/admin', isLoggedIn, isAdmin, (req, res) => {
   res.render('admin');
 });
 
-router.get("/:table", async (req, res) => {
+router.get("/:table", isLoggedIn, isAdmin, async (req, res) => {
   console.log(req.params);
   var table_name = req.params["table"];
   if (table_name === undefined) table_name = "konyv";
@@ -67,7 +67,7 @@ router.get("/:table", async (req, res) => {
 });
 
 // New record submit form handler
-router.post("/:table/submitNewRecord", async (req, res) => {
+router.post("/:table/submitNewRecord", isLoggedIn, isAdmin, async (req, res) => {
   // Logging some stuff
   console.log(req.body);
   var table_name = req.params["table"];
@@ -119,7 +119,7 @@ router.post("/:table/submitNewRecord", async (req, res) => {
 
 
 // delete record button handler
-router.get("/:table/deleteRecord/:i", async (req, res) => {
+router.get("/:table/deleteRecord/:i", isLoggedIn, isAdmin, async (req, res) => {
   // Logging some stuff
   console.log(req.body);
   let table_name = req.params["table"];
