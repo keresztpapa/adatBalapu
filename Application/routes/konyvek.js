@@ -69,4 +69,35 @@ router.post('/add_into_cart', async (req, res) => {
   }
 });
 
+router.post('/toggle_favorite', async (req, res) => {
+  const isbn = req.body.isbn;
+  function removeItemOnce(arr, value) {
+    var index = arr.indexOf(value);
+    if (index > -1) {
+      arr.splice(index, 1);
+    }
+    return arr;
+  }
+  try {
+  console.log(req.session.user.favorites);
+  if(req.session.user.favorites.includes(isbn)){
+    let connection = await getConnection();
+    removeItemOnce(req.session.user.favorites, isbn);
+    connection.client.execute("BEGIN remove_favorite('"+req.session.user.email+"','"+isbn+"'); END;")
+    res.status(200).json({message: "Sikeresen eltávolítva."});
+  } else {
+    let connection = await getConnection();
+    connection.client.execute("BEGIN add_favorite('"+req.session.user.email+"','"+isbn+"'); END;")
+    req.session.user.favorites.push(isbn);
+    console.log(req.session.user.favorites);
+    res.status(200).json({message: "Sikeresen hozzáadva."});
+  }
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({message: "Internal server error"});
+  }
+
+});
+
 module.exports = router;

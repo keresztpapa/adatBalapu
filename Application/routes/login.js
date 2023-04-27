@@ -21,7 +21,7 @@ router.post('/', async function (req, res, next) {
         const connection = await getConnection();
 
         // Execute the SQL query to fetch the data
-        let result = (await connection.client.execute(`SELECT * FROM felhasznalo WHERE email LIKE '${req.body.email}'`));
+        let result = await connection.client.execute(`SELECT * FROM felhasznalo WHERE email LIKE '${req.body.email}'`);
 
         // Release the connection back to the pool
         await connection.close();
@@ -44,6 +44,19 @@ router.post('/', async function (req, res, next) {
                 'telefon': result.rows[0][4],
                 'isAdmin': result.rows[0][5] === 'admin',
             }
+            const connection = await getConnection();
+            let favorites = await connection.client.execute(
+                `SELECT isbn FROM felhasznalo INNER JOIN kedvence
+                ON felhasznalo.email = kedvence.email
+                WHERE kedvence.email LIKE '${req.body.email}'`);
+            await connection.close();
+            console.log(req.body.email + " kedvencei: ")
+            req.session.user.favorites = [];
+            favorites.rows.forEach(row => {
+                req.session.user.favorites.push(row[0])
+            });
+            console.log(req.session.user.favorites);
+
             res.locals.user = req.session.user;
             res.redirect('/')
             return

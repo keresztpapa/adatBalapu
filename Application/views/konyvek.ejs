@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="stylesheets/style.css">
   <link rel="stylesheet" href="stylesheets/books.css">
   <script src="javascripts/cartFunction.js"></script>
+  <script src="javascripts/toggleFavorite.js"></script>
   <title>Könyvesbolt</title>
 </head>
 <body>
@@ -33,7 +34,13 @@
             <p>Kiadó: <%= row[6] %></p>
             <!-- Atlag rating -->
             <div class="book-rating">
-              <img class="star-icon" src="images/star-solid.svg" />
+                <% if (user === undefined) { %>
+                <img class="star-icon" src="images/star-solid.svg"/>
+                <% } else if (user.favorites?.includes(row[0])) { %>
+                <img class="star-icon" src="images/gold-star.svg" onclick="toggleFavorite('<%=row[0]%>')"/>
+                <% } else { %>
+                <img class="star-icon" src="images/star-solid.svg" onclick="toggleFavorite('<%=row[0]%>')"/>
+                <% } %>
               <p> <%= row[5] == null ? "Nincs" : Math.round(row[5] * 100) / 100 %></p>
             </div>
             <!-- Konyv ara-->
