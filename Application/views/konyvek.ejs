@@ -34,14 +34,14 @@
             <p>Kiadó: <%= row[6] %></p>
             <!-- Atlag rating -->
             <div class="book-rating">
-                <% if (user === undefined) { %>
-                <img class="star-icon" src="images/star-solid.svg"/>
-                <% } else if (user.favorites?.includes(row[0])) { %>
-                <img class="star-icon" src="images/gold-star.svg" onclick="toggleFavorite('<%=row[0]%>')"/>
-                <% } else { %>
-                <img class="star-icon" src="images/star-solid.svg" onclick="toggleFavorite('<%=row[0]%>')"/>
-                <% } %>
-              <p> <%= row[5] == null ? "Nincs" : Math.round(row[5] * 100) / 100 %></p>
+              <% if (user === undefined) { %>
+              <img class="star-icon" src="images/star-solid.svg"/>
+              <% } else if (user.favorites && user.favorites.includes(row[0])) { %>
+              <img class="star-icon" src="images/gold-star.svg" onclick="toggleFavorite('<%=row[0]%>')"/>
+              <% } else { %>
+              <img class="star-icon" src="images/star-solid.svg" onclick="toggleFavorite('<%=row[0]%>')"/>
+              <% } %>
+              <p><%= row[5] == null ? "Nincs" : Math.round(row[5] * 100) / 100 %></p>
             </div>
             <!-- Konyv ara-->
             <button onclick="addToCart('<%= row[0] %>')" data-isbn="<%= row[0] %>" class="book-price">Ár: <%= row[4] %> Ft</button>

@@ -27,10 +27,19 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.post('/delete_from_cart', async (req, res) => {
+  const quantity = 1;
+  const email = req.session.email;
+
+  console.log(`Received ISBN: ${email}`);
+  console.log(`Received CIM: ${cim}`);
+});
+
+
 router.post('/add_into_cart', async (req, res) => {
   const isbn = req.body.isbn;
   const quantity = 1;
-  const email = req.session.email;
+  const email = req.session.user.email;
 
   console.log(`Received ISBN: ${isbn}`);
   try {
@@ -48,15 +57,15 @@ router.post('/add_into_cart', async (req, res) => {
 
   const user_addr = result1.rows;
   console.log(email);
-  console.log(user_addr);
+  console.log(user_addr[0][0]);
   // Insert the new item into the cart using the next available id
   const insertResult = await connection.client.execute(
     `INSERT INTO tetel (id, email, isbn, darabszam, hova)
      VALUES (:id, :email, :isbn, :quantity, :hova)`,
-    [nextId, email, isbn, quantity, user_addr]
+    [nextId, email, isbn, quantity, user_addr[0][0]]
   );
       
-    console.log("Rows inserted: " + result.rowsAffected);
+    console.log("Rows inserted: " + result);
 
     // Release the connection back to the pool
     await connection.close();
