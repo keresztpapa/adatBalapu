@@ -32,8 +32,9 @@ router.post('/delete_from_cart', async (req, res) => {
     const conn = await getConnection();
     
     const result = await conn.client.execute(`DELETE FROM tetel WHERE id = ${id}`);
-    
-    res.redirect(`/`);
+    await conn.client.execute(`COMMIT`);
+    console.log(result);
+    res.redirect("/");
   } catch (err) {
     console.error(err);
     res.status(500).send('Internal Server Error 1');
