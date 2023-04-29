@@ -53,20 +53,20 @@ function deleteFromCart(id) {
 }
 
 
-function finalize(){
-  const table = document.querySelector('table');
-  const rows = table.querySelectorAll('tr');
-  const data = [];
+function finalize() {
+  var popup = window.open("", "popup", "width=400,height=400");
+  popup.document.write("<form onsubmit='submitForm()'>"); 
+  popup.document.write("<label for='cardNumber'>Kártyaszám:</label>");
+  popup.document.write("<input type='text' id='cardNumber' name='cardNumber'><br>");
+  popup.document.write("<label for='expiration'>Lejárati idő:</label>");
+  popup.document.write("<input type='text' id='expiration' name='expiration'><br>");
+  popup.document.write("<label for='cvv'>CVV kód:</label>");
+  popup.document.write("<input type='text' id='cvv' name='cvv'><br>");
+  popup.document.write("<input type='submit' value='Submit'>");
+  popup.document.write("</form>");
+}
 
-  rows.forEach(function(row) {
-    const cells = row.querySelectorAll('td');
-    if (cells.length > 0) {
-      const rowData = [];
-      cells.forEach(function(cell) {
-        rowData.push(cell.textContent);
-      });
-      data.push(rowData);
-    }
-  });
-  console.log(data);
+function submitForm() {
+  window.opener.alert("A fizetés sikeres volt!"); 
+  window.close(); 
 }
