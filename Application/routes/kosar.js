@@ -11,7 +11,10 @@ router.get('/', async (req, res) => {
 
     const email = req.session.user.email;
     
-    const result = await conn.client.execute(`SELECT email, isbn, darabszam, hova, id FROM tetel WHERE email = :email`,[email]);
+    const result = await conn.client.execute(`
+      SELECT email, cim, darabszam, hova, id FROM tetel, konyv WHERE tetel.isbn = konyv.isbn AND email = :email`,
+      [email]
+      );
     
     await conn.close();
     
