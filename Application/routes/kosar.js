@@ -11,9 +11,29 @@ router.get('/', async (req, res) => {
 
     const email = req.session.user.email;
     
-    const result = await conn.client.execute(`SELECT email, isbn, darabszam, hova FROM tetel`);
+    const result = await conn.client.execute(`SELECT email, isbn, darabszam, hova, id FROM tetel`);
     console.log(result);
     res.render('kosar', { data: result.rows });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error 1');
+  }
+});
+
+router.post('/delete_from_cart', async (req, res) => {
+  const quantity = 1;
+  const email = req.session.user.email;
+  const id = req.body.id;
+
+  console.log(`Received CIM: ${id}`);
+
+  try {
+    
+    const conn = await getConnection();
+    
+    const result = await conn.client.execute(`DELETE FROM tetel WHERE id = ${id}`);
+    
+    res.redirect(`/`);
   } catch (err) {
     console.error(err);
     res.status(500).send('Internal Server Error 1');

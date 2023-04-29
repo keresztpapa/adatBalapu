@@ -25,16 +25,15 @@ function addToCart(isbn) {
   });  
 }
 
-function deleteFromCart(email, cim) {
-  console.log(email);
-  console.log(cim);
+function deleteFromCart(id) {
+  console.log(id);
 
-  fetch(`/konyvek/delete_from_cart`, {
+  fetch(`/kosar/delete_from_cart`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({email: email, cim:cim})
+    body: JSON.stringify({id:id})
   }).then(response => {
     if (!response.ok) {
       throw new Error("Failed to delete book from cart 1");
@@ -51,4 +50,23 @@ function deleteFromCart(email, cim) {
     console.error(error);
     alert("Failed to delete book from cart");
   });  
+}
+
+
+function finalize(){
+  const table = document.querySelector('table');
+  const rows = table.querySelectorAll('tr');
+  const data = [];
+
+  rows.forEach(function(row) {
+    const cells = row.querySelectorAll('td');
+    if (cells.length > 0) {
+      const rowData = [];
+      cells.forEach(function(cell) {
+        rowData.push(cell.textContent);
+      });
+      data.push(rowData);
+    }
+  });
+  console.log(data);
 }

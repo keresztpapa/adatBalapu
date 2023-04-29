@@ -27,14 +27,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post('/delete_from_cart', async (req, res) => {
-  const quantity = 1;
-  const email = req.session.email;
-
-  console.log(`Received ISBN: ${email}`);
-  console.log(`Received CIM: ${cim}`);
-});
-
 
 router.post('/add_into_cart', async (req, res) => {
   const isbn = req.body.isbn;
