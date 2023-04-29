@@ -33,36 +33,37 @@ router.post('/add_into_cart', async (req, res) => {
   const quantity = 1;
   const email = req.session.user.email;
 
-  console.log(`Received ISBN: ${isbn}`);
   try {
-    // Get a connection to the Oracle database
+
     const connection = await getConnection();
 
-  const result = await connection.client.execute(
-    `SELECT MAX(id) FROM tetel`
-  );
-  const nextId = result.rows[0]+1;
+    const result = await connection.client.execute(
+      `SELECT MAX(id) FROM tetel`
+    );
+    const nextId = result.rows[0]+1;
 
-  const result1 = await connection.client.execute(
-    `SELECT cim FROM felhasznalo WHERE email = :email`, [email]
-  );
+    const result1 = await connection.client.execute(
+      `SELECT cim FROM felhasznalo WHERE email = :email`, [email]
+    );
 
-  const user_addr = result1.rows;
-  console.log(email);
-  console.log(user_addr[0][0]);
-  // Insert the new item into the cart using the next available id
-  const insertResult = await connection.client.execute(
-    `INSERT INTO tetel (id, email, isbn, darabszam, hova)
-     VALUES (:id, :email, :isbn, :quantity, :hova)`,
-    [nextId, email, isbn, quantity, user_addr[0][0]]
-  );
-      
+    const user_addr = result1.rows;
+    
+    //console.log(email);
+    //console.log(user_addr[0][0]);
+    //console.log(`Received ISBN: ${isbn}`);
+
+    const insertResult = await connection.client.execute(
+      `INSERT INTO tetel (id, email, isbn, darabszam, hova)
+       VALUES (:id, :email, :isbn, :quantity, :hova)`,
+      [nextId, email, isbn, quantity, user_addr[0][0]]
+    );
+
+    await connection.client.execute(`COMMIT`);
+
     console.log("Rows inserted: " + result);
 
-    // Release the connection back to the pool
     await connection.close();
 
-    // Send a success response back to the client
     res.status(200).json({message: "Item added to cart."});
   } catch (err) {
     console.error(err);

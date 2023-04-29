@@ -38,18 +38,16 @@ function deleteFromCart(id) {
     if (!response.ok) {
       throw new Error("Failed to delete book from cart 1");
     }
+    window.location.reload();
     return response.json();
   })
   .then(data => {
     if (data.message) {
-      alert(data.message);
+      //alert(data.message);
     } else {
       throw new Error("Failed to delete book from cart 2");
-  }})
-  .catch(error => {
-    console.error(error);
-    alert("Failed to delete book from cart");
-  });  
+  }});  
+  
 }
 
 

@@ -11,8 +11,10 @@ router.get('/', async (req, res) => {
 
     const email = req.session.user.email;
     
-    const result = await conn.client.execute(`SELECT email, isbn, darabszam, hova, id FROM tetel`);
-    console.log(result);
+    const result = await conn.client.execute(`SELECT email, isbn, darabszam, hova, id FROM tetel WHERE email = :email`,[email]);
+    
+    await conn.close();
+    
     res.render('kosar', { data: result.rows });
   } catch (err) {
     console.error(err);
@@ -31,10 +33,11 @@ router.post('/delete_from_cart', async (req, res) => {
     
     const conn = await getConnection();
     
-    const result = await conn.client.execute(`DELETE FROM tetel WHERE id = ${id}`);
+    const result = await conn.client.execute(`DELETE FROM tetel WHERE id = :id`,[id]);
     await conn.client.execute(`COMMIT`);
     console.log(result);
-    await connection.close();
+    
+    await conn.close();
 
     res.status(200).send("Delete operation done");
   } catch (err) {
