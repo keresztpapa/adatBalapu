@@ -32,6 +32,15 @@
         <option value="/admin/uzlet">Üzletek</option>
       </select>
 
+      <select
+        onchange="javascript:handleSelect(this)"
+        onfocus="this.selectedIndex = -1;"
+      >
+        <option value="/admin/query/genres">Műfaj-könyv</option>
+        <option value="/admin/query/publisher">Kiadó-könyv</option>
+        <option value="/admin/query/orders">Rendelések</option>
+      </select>
+
       <% if (columnNames !== undefined) { %>
       <!-- Dynamic form -->
       <form
@@ -91,7 +100,6 @@
             <td><%= rows[i][j] %></td>
             <% } %>
             <td class="actions">
-              <a href="<%=tableName%>/editRecord/<%=i%>"> <button class="action-button">Edit</button> </a>
               <a href="<%=tableName%>/deleteRecord/<%=i%>"> <button class="action-button">Delete</button> </a>
             </td>
           </tr>

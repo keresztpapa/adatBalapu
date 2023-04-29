@@ -117,6 +117,50 @@ router.post("/:table/submitNewRecord", isLoggedIn, isAdmin, async (req, res) => 
   return;
 });
 
+router.get("/query/:query_option", async (req, res) => {
+  console.log(req.params);
+  var query_option = req.params["query_option"];
+  if (query_option === undefined) query_option = "genres";
+
+  query_option = query_option.toLowerCase();
+
+  try {
+    // Get a connection to the Oracle database
+    const connection = await getConnection();
+
+    let query, table_name;
+    switch (query_option) {
+      case 'genres':
+        query = `SELECT * FROM konyv INNER JOIN mufaja ON konyv.isbn = mufaja.isbn ORDER BY konyv.cim`;
+        table_name = 'Könyv és Műfajok';
+        break;
+      case 'publisher':
+        query = `SELECT * FROM konyv INNER JOIN kiadta ON konyv.isbn = kiadta.isbn INNER JOIN kiado ON kiadta.nev = kiado.nev ORDER BY konyv.cim`;
+        table_name = 'Könyv és Kiadók';
+        break;
+      case 'orders':
+        query = `SELECT felhasznalo.email, COUNT(*) FROM tetel INNER JOIN felhasznalo ON tetel.email = felhasznalo.email GROUP BY felhasznalo.email`;
+        table_name = 'Felhasználók és Rendelések';
+        break;
+      default:
+        query = `SELECT * FROM konyv`;
+        table_name = 'Könyv';
+        break;
+    }
+
+    const data = await connection.client.execute(query);
+
+    await connection.close();
+
+    req.session.rows = data.rows;
+
+    // Render the data on an HTML page using a view template
+    res.render("query", {rows: data.rows});
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
 
 // delete record button handler
 router.get("/:table/deleteRecord/:i", isLoggedIn, isAdmin, async (req, res) => {

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/admin.css" />
+    <title>Könyvesbolt</title>
+  </head>
+  <body onload="">
+    <!-- Navbar -->
+    <% include navbar %>
+
+    <!-- Content area -->
+    <div class="content">
+      <h2>Query eredménye</h2>
+
+      <!-- Table data -->
+      <table>
+        <tbody>
+          <% for (let i = 0; i < rows.length; i++) { %>
+          <tr>
+            <% for (let j = 0; j < rows[i].length; j++) { %>
+            <td><%= rows[i][j] %></td>
+            <% } %>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
